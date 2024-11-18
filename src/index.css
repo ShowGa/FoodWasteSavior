@@ -2,8 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color-white: rgb(255, 255, 255);
+  --primary-color-maintheme: rgb(0, 97, 95);
+  /* color: var(--primary-color-white); */
+}
+
+/* ================ HTML Elements ================ */
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  height: 3000px;
+  background-color: var(--primary-color-maintheme);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header[data-theme="dark"] {
+  background: none;
+  color: var(--primary-color-white);
+}
+
+header[data-theme="light"] {
+  background-color: rgb(249, 243, 240);
+  color: var(--primary-color-maintheme);
+}
+
+header[data-theme="light"] .btn {
+  border: 1px solid var(--primary-color-maintheme);
+}
+
+/* ================ Classes ================ */
+.btn {
+  /* px-4 py-1 border  */
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color-white);
 }
