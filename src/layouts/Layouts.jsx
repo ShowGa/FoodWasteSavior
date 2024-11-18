@@ -1,7 +1,12 @@
 import React from "react";
 
 const Layouts = () => {
-  return <div>Layouts</div>;
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
 };
 
 export default Layouts;
