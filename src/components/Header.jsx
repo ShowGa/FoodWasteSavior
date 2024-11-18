@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="c-header" data-theme={`${theme}`}>
+      <header className="c-header z-50" data-theme={`${theme}`}>
         <div className="max-w-7xl px-20 mx-auto max-lg:px-8">
           <nav className="flex flex-row items-center z-10 max-lg:border-b">
             {/* left */}

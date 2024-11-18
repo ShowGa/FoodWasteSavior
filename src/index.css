@@ -15,7 +15,7 @@ body {
   box-sizing: border-box;
 
   height: 3000px;
-  background-color: var(--primary-color-maintheme);
+  /* background-color: var(--primary-color-maintheme); */
 }
 
 header {
