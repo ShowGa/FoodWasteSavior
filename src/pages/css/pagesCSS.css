@@ -1,0 +1,37 @@
+.p-instruction_swiper_container {
+  /* width: 100%; */
+  height: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================== Swiper ================== */
+/* .p-instruction_swiper_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+} */
+.p-instruction_swiper_container .swiper {
+  width: 100%;
+  height: 100%;
+}
+.p-instruction_swiper_container .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+.p-instruction_swiper_container .swiper-pagination {
+  position: static;
+  margin-top: 1rem;
+  /* transform: translateY(-8rem) translateX(3rem); */
+}
+.p-instruction_swiper_container .swiper-pagination-bullet {
+  background-color: greenyellow;
+}
+
+/* ================== RWD ================== */
+@media (max-width: 1024px) {
+  .p-instruction_swiper_container .swiper-pagination {
+    transform: translateY(0) translateX(0);
+  }
+}
