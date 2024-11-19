@@ -7,8 +7,9 @@ export default {
         primary: "var(--primary-color-maintheme)",
         secondary: "var(--secondary-color-light)",
         highlight: "var(--highlight-color)",
+        secondaryText: "var(--secondary-color-text)",
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
+  plugins: [],
 };
