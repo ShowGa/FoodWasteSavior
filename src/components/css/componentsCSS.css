@@ -34,18 +34,3 @@
 
   flex: 0 1 25rem;
 }
-
-.c-introduction-card-icon {
-  font-size: 24px;
-  margin-bottom: 0.5rem;
-}
-
-.c-introduction-card-title {
-  font-size: 18px;
-  margin: 0.5rem 0;
-}
-
-.c-introduction-card-text {
-  font-size: 14px;
-  color: #555;
-}
