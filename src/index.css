@@ -5,7 +5,10 @@
 :root {
   --primary-color-white: rgb(255, 255, 255);
   --primary-color-maintheme: rgb(0, 97, 95);
-  /* color: var(--primary-color-white); */
+  --secondary-color-light: rgb(249, 243, 240);
+  --highlight-color: rgb(255, 251, 155);
+  --btn-padding: 0.5rem 1rem;
+  --btn-border: 1px solid;
 }
 
 /* ================ HTML Elements ================ */
@@ -43,7 +46,6 @@ header[data-theme="light"] .btn {
 
 /* ================ Classes ================ */
 .btn {
-  /* px-4 py-1 border  */
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--primary-color-white);
+  padding: var(--btn-padding);
+  border: var(--btn-border) var(--primary-color-white);
 }

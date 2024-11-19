@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero section */}
-      <section className="h-[40rem] bg-[rgb(0,97,95)]">
+      <section className="h-[40rem] bg-primary">
         {/* for background image => absolute */}
         <div className="absolute top-0 left-0 w-full h-full"></div>
         <div className="flex flex-col justify-end items-center h-full text-white pb-20 px-3">
@@ -44,7 +44,7 @@ const Home = () => {
       <section>introduction section</section>
 
       {/* Instruction Section */}
-      <section className="bg-[rgb(0,97,95)] py-16 px-40 max-lg:px-10">
+      <section className="bg-primary py-16 px-40 max-lg:px-10">
         <div className="p-instruction_swiper_container">
           <Swiper
             modules={[Navigation, Pagination, EffectFade, Autoplay]}

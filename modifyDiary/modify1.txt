@@ -1,0 +1,23 @@
+# modify1.txt
+
+## src/index.css
+1. 增加了更多的CSS變數來管理顏色和常用樣式。
+   - 好處：提高了樣式的可維護性和一致性，方便全局調整。
+
+2. 將`.btn`類別的樣式抽取成共用的類別。
+   - 好處：減少了重複的樣式定義，增強了樣式的可重用性。
+
+## src/pages/Home.jsx
+1. 使用自定義的TailwindCSS類別來抽取常用樣式。
+   - 好處：減少了HTML結構中的類名數量，提高了可讀性。
+
+## src/pages/css/pagesCSS.css
+1. 使用TailwindCSS的響應式設計工具來簡化樣式。
+   - 好處：提高了響應式設計的效率和一致性。
+
+## tailwind.config.js
+1. 添加了常用的TailwindCSS插件（如`@tailwindcss/forms`和`@tailwindcss/typography`）。
+   - 好處：擴展了TailwindCSS的功能，簡化了表單和排版樣式的管理。
+
+2. 擴展了顏色配置以使用CSS變數。
+   - 好處：提高了顏色管理的靈活性和一致性。
