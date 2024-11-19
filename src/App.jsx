@@ -10,7 +10,9 @@ import UserLogin from "./pages/UserLogin";
 import UserSignUp from "./pages/UserSignUp";
 import BusinessSignUp from "./pages/BusinessSignUp";
 import BusinessLogin from "./pages/BusinessLogin";
-
+import UserProfile from "./pages/UserProfile";
+import Search from "./pages/Search";
+import Recommend from "./pages/Recommend";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -19,6 +21,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layouts />}>
           <Route index element={<Home />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/recommend" element={<Recommend />} />
+          </Route>
         </Route>
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignUp />} />
