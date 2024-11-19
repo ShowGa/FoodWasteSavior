@@ -26,7 +26,7 @@ const UserLogin = () => {
 
         {/* Form Container */}
         <section className="flex justify-center items-center flex-1 h-full">
-          <div className="form_container">
+          <div className="form_container w-full max-w-[20rem]">
             <h2 className="text-3xl font-extrabold">User Login</h2>
             <span className="text-sm text-gray-400">
               Please enter your details
