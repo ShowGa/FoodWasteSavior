@@ -7,6 +7,7 @@ import Layouts from "./layouts/Layouts";
 // pages
 import Home from "./pages/Home";
 import UserLogin from "./pages/UserLogin";
+import UserSignUp from "./pages/UserSignUp";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />} />
         </Route>
         <Route path="/user-login" element={<UserLogin />} />
+        <Route path="/user-signup" element={<UserSignUp />} />
       </Routes>
     </BrowserRouter>
   );
