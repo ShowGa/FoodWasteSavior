@@ -23,8 +23,35 @@
   background-color: greenyellow;
 }
 
-@media (max-width: 1024px) {
-  .p-instruction_swiper_container .swiper-pagination {
-    transform: translateY(0) translateX(0);
-  }
+/* =========== OAuth =========== */
+.p-OAuth_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+/* =========== pages global =========== */
+.img_container {
+  width: 100%;
+  height: 100%;
+}
+.img_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.p-divider_line {
+  width: 100%;
+  height: 1px;
+  background-color: #e9e9e9;
 }
