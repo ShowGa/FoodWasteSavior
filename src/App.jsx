@@ -8,6 +8,8 @@ import Layouts from "./layouts/Layouts";
 import Home from "./pages/Home";
 import UserLogin from "./pages/UserLogin";
 import UserSignUp from "./pages/UserSignUp";
+import BusinessSignUp from "./pages/BusinessSignUp";
+import BusinessLogin from "./pages/BusinessLogin";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +22,8 @@ function App() {
         </Route>
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignUp />} />
+        <Route path="/business-signup" element={<BusinessSignUp />} />
+        <Route path="/business-login" element={<BusinessLogin />} />
       </Routes>
     </BrowserRouter>
   );
