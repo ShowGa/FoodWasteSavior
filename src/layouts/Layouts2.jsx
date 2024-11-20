@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 
 const Layouts2 = () => {
   // check isMobile
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // ===================== //
   //    Helper Function    //
@@ -26,7 +26,7 @@ const Layouts2 = () => {
 
   return (
     <>
-      {!isMobile && <Header2 />}
+      <Header2 />
       <Outlet />
       {!isMobile && <MobileFooterNav />}
     </>

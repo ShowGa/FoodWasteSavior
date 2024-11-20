@@ -4,7 +4,7 @@ import { Outlet, Navigate } from "react-router-dom";
 
 const PrivateRoute = () => {
   // zustand later
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return isLoggedIn ? <Outlet /> : <Navigate to="/user-login" />;
 };

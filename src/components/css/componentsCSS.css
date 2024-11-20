@@ -34,3 +34,56 @@
 
   flex: 0 1 25rem;
 }
+
+/* =========== header2 =========== */
+.c-header2 {
+  position: sticky;
+}
+
+.c-header2-nav_item {
+  /* border rounded-full border-gray-300 px-4 py-2 */
+  border-radius: 100px;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* App.css（原生CSS） */
+.search-bar {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  width: 12.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+}
+
+.filter-options {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.filter-select {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  background-color: white;
+}
