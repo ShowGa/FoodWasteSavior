@@ -11,9 +11,7 @@ import { useHeaderHeightStore } from "../zustand/hederHeightStore";
 
 const Header2 = () => {
   // zustand
-  const { header2Height, setHeader2Height } = useHeaderHeightStore();
-
-  console.log(header2Height);
+  const { setHeader2Height } = useHeaderHeightStore();
 
   // useRef
   const headerRef = useRef(null);
