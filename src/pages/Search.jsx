@@ -1,8 +1,13 @@
 import React from "react";
 // css
 import "./css/pagesCSS.css";
+// zustand
+import { useHeaderHeightStore } from "../zustand/hederHeightStore";
 
 const Search = () => {
+  // zustand
+  const { header2Height } = useHeaderHeightStore();
+
   return (
     <main>
       <div className="h-screen flex flex-row">
@@ -11,7 +16,12 @@ const Search = () => {
         </section>
 
         <section className="c-right-side basis-[37%] bg-blue-200">
-          <div className="bg-green-300 w-full h-[10rem]">Map</div>
+          <div
+            className="sticky bg-green-300 w-full h-[10rem]"
+            style={{ top: `${header2Height}px` }}
+          >
+            Map
+          </div>
         </section>
       </div>
     </main>

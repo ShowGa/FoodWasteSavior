@@ -38,6 +38,8 @@
 /* =========== header2 =========== */
 .c-header2 {
   position: sticky;
+
+  z-index: 50;
 }
 
 .c-header2-nav_item {
