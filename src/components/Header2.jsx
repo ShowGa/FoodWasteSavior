@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from "react";
+// css
+import "../componentsCSS.css";
 // react icons
 import { HiShoppingBag } from "react-icons/hi2";
 import { FaUserCircle } from "react-icons/fa";
@@ -64,16 +66,16 @@ const Header2 = () => {
       <div className="mx-auto p-4 border-b">
         <div className="flex justify-center items-center space-x-4">
           {/* Search */}
-          <div className="search-bar">
+          <div className="c-search-bar">
             <input
               type="text"
               placeholder="Search..."
-              className="search-input"
+              className="c-search_input"
             />
           </div>
 
           {/* Filter */}
-          <div className="filter-options">
+          <div className="c-filter-options">
             <AiOutlineControl className="text-3xl" />
           </div>
         </div>
