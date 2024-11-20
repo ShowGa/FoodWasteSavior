@@ -4,6 +4,10 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // layouts
 import Layouts from "./layouts/Layouts";
+import Layouts2 from "./layouts/Layouts2";
+// components
+import PrivateRoute from "./components/PrivateRoute";
+
 // pages
 import Home from "./pages/Home";
 import UserLogin from "./pages/UserLogin";
@@ -19,14 +23,21 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* logout layout */}
         <Route path="/" element={<Layouts />}>
           <Route index element={<Home />} />
+        </Route>
+
+        {/* login layout */}
+        <Route element={<Layouts2 />}>
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/search" element={<Search />} />
             <Route path="/recommend" element={<Recommend />} />
           </Route>
         </Route>
+
+        {/* No Layout */}
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignUp />} />
         <Route path="/business-signup" element={<BusinessSignUp />} />
