@@ -17,6 +17,8 @@ import BusinessLogin from "./pages/BusinessLogin";
 import UserProfile from "./pages/UserProfile";
 import Search from "./pages/Search";
 import Recommend from "./pages/Recommend";
+import Favorite from "./pages/Favorite";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -34,6 +36,7 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/search" element={<Search />} />
             <Route path="/recommend" element={<Recommend />} />
+            <Route path="/favorite" element={<Favorite />} />
           </Route>
         </Route>
 
