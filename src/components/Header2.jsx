@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 // css
-import "../componentsCSS.css";
+import "./css/componentsCSS.css";
 // react icons
 import { HiShoppingBag } from "react-icons/hi2";
 import { FaUserCircle } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { FaHeart } from "react-icons/fa6";
 import { AiOutlineControl } from "react-icons/ai";
 
 // zustand
-import { useHeaderHeightStore } from "../zustand/hederHeightStore";
+import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
 
 const Header2 = () => {
   // zustand
