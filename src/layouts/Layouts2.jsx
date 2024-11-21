@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // components
 import Header2 from "../components/Header2";
+import Header3 from "../components/Header3";
 import MobileFooterNav from "../components/MobileFooterNav";
 
 // react-router-dom
@@ -27,6 +28,7 @@ const Layouts2 = () => {
   return (
     <>
       <Header2 />
+      {/* <Header3 /> */}
       <Outlet />
       {!isMobile && <MobileFooterNav />}
     </>
