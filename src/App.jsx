@@ -18,7 +18,9 @@ import UserProfile from "./pages/UserProfile";
 import Search from "./pages/Search";
 import Recommend from "./pages/Recommend";
 import Favorite from "./pages/Favorite";
-
+import Orders from "./pages/Orders";
+import OrderDetail from "./pages/OrderDetail";
+import OrdersHistory from "./pages/OrdersHistory";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -37,6 +39,9 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/recommend" element={<Recommend />} />
             <Route path="/favorite" element={<Favorite />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders-history" element={<OrdersHistory />} />
+            <Route path="/order/:id" element={<OrderDetail />} />
           </Route>
         </Route>
 
