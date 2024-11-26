@@ -8,6 +8,8 @@ export default {
         secondary: "var(--secondary-color-light)",
         highlight: "var(--highlight-color)",
         secondaryText: "var(--secondary-color-text)",
+        secondaryTheme: "var(--primary-color-secondarytheme)",
+        secondaryThemeHover: "var(--primary-color-secondarytheme-hover)",
       },
     },
   },
