@@ -80,3 +80,23 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
+
+/* =========== StoreCard.jsx =========== */
+.c-store-card {
+  min-width: 18rem;
+  /* max-width: 30rem; */
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.c-store-img-container {
+  width: 100%;
+  height: 10rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  overflow: hidden;
+}
