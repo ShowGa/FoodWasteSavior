@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from "react";
+// react router
+import { Link } from "react-router-dom";
 // css
 import "./css/componentsCSS.css";
 // react icons
@@ -7,9 +9,17 @@ import { FaUserCircle } from "react-icons/fa";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { FaHeart } from "react-icons/fa6";
 import { AiOutlineControl } from "react-icons/ai";
+import { FaShoppingCart } from "react-icons/fa";
 
 // zustand
 import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
+
+const buttonIconsInfo = [
+  { icon: <FaShoppingCart />, link: "/orders" },
+  { icon: <RiCompassDiscoverLine />, link: "/discover" },
+  { icon: <FaHeart />, link: "/favorite" },
+  { icon: <FaUserCircle />, link: "/profile" },
+];
 
 const Header2 = () => {
   // zustand
@@ -50,15 +60,11 @@ const Header2 = () => {
         </div>
 
         <div className="flex flex-row items-center gap-4">
-          <div className="c-header2-nav_item">
-            <RiCompassDiscoverLine />
-          </div>
-          <div className="c-header2-nav_item">
-            <FaHeart />
-          </div>
-          <div className="c-header2-nav_item">
-            <FaUserCircle />
-          </div>
+          {buttonIconsInfo.map((iconInfo, index) => (
+            <Link className="c-header2-nav_item" to={iconInfo.link}>
+              {iconInfo.icon}
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -95,4 +101,22 @@ export default Header2;
 ============= Adjust later ==============
 1.
 
+*/
+
+/*
+
+======== deleted =========
+<div className="c-header2-nav_item">
+            <RiCompassDiscoverLine />
+          </div>
+          <div className="c-header2-nav_item">
+            <FaShoppingCart />
+          </div>
+
+          <div className="c-header2-nav_item">
+            <FaHeart />
+          </div>
+          <div className="c-header2-nav_item">
+            <FaUserCircle />
+          </div>
 */

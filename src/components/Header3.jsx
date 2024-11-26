@@ -6,6 +6,14 @@ import { HiShoppingBag } from "react-icons/hi2";
 import { FaUserCircle } from "react-icons/fa";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { FaHeart } from "react-icons/fa6";
+import { FaShoppingCart } from "react-icons/fa";
+
+const buttonIconsInfo = [
+  { icon: <FaShoppingCart />, link: "/orders" },
+  { icon: <RiCompassDiscoverLine />, link: "/discover" },
+  { icon: <FaHeart />, link: "/favorite" },
+  { icon: <FaUserCircle />, link: "/profile" },
+];
 
 const Header3 = () => {
   return (
@@ -17,15 +25,11 @@ const Header3 = () => {
         </div>
 
         <div className="flex flex-row items-center gap-4">
-          <div className="c-header2-nav_item">
-            <RiCompassDiscoverLine />
-          </div>
-          <div className="c-header2-nav_item">
-            <FaHeart />
-          </div>
-          <div className="c-header2-nav_item">
-            <FaUserCircle />
-          </div>
+          {buttonIconsInfo.map((iconInfo, index) => (
+            <Link key={index} className="c-header2-nav_item" to={iconInfo.link}>
+              {iconInfo.icon}
+            </Link>
+          ))}
         </div>
       </div>
     </header>
@@ -37,6 +41,6 @@ export default Header3;
 /*
 
 ============= Notes ===========
-1. Using c-header2 class name because I am too
+1. Using c-header2 class name because I am too lazy to create a new component
 
 */
