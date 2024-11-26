@@ -7,10 +7,12 @@ import { FaUserCircle } from "react-icons/fa";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { FaHeart } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
+import { RiSearchLine } from "react-icons/ri";
 
 const buttonIconsInfo = [
-  { icon: <FaShoppingCart />, link: "/orders" },
   { icon: <RiCompassDiscoverLine />, link: "/discover" },
+  { icon: <RiSearchLine />, link: "/search" },
+  { icon: <FaShoppingCart />, link: "/orders" },
   { icon: <FaHeart />, link: "/favorite" },
   { icon: <FaUserCircle />, link: "/profile" },
 ];
