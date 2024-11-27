@@ -5,10 +5,12 @@ import "./css/pagesCSS.css";
 import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
 // components
 import StoreCard from "../components/StoreCard";
+import MapboxSearchPage from "../components/MapboxSearchPage";
 // images
 import { img1, img2, img3 } from "../assets";
 // icons
 import { AiOutlineControl, AiOutlineSearch } from "react-icons/ai";
+// mapbox
 
 const storeInfo = [
   {
@@ -97,15 +99,15 @@ const Search = () => {
         </section>
 
         {/* right side */}
-        <section className="basis-[37%] bg-blue-200">
+        <section className="basis-[37%] bg-red-300">
           <div
-            className="sticky bg-green-300 w-full"
+            className="sticky w-full"
             style={{
               top: `${header2Height}px`,
               height: `${mapHeight}px`,
             }}
           >
-            Map
+            <MapboxSearchPage />
           </div>
         </section>
       </div>
