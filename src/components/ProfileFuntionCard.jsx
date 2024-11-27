@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ProfileFuntionCard = () => {
   return (
-    <Link to={"/"}>
+    <Link to={"/orders-history"}>
       <div className="flex flex-col items-start gap-12 border-2 border-gray-200 rounded-lg p-4 shadow-md min-w-[22rem]">
         <div>
           <BiSolidPurchaseTag className="text-4xl" />
