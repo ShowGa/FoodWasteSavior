@@ -55,3 +55,15 @@
   height: 1px;
   background-color: #e9e9e9;
 }
+
+/* =========== Discover.jsx =========== */
+.c-discover-card-container {
+  width: 100%; /* 你可以根據需要設置寬度 */
+  overflow-x: auto; /* 當內容超出時顯示水平滾動條 */
+  white-space: nowrap; /* 禁止內容換行 */
+  scroll-snap-type: x mandatory; /* 滾動對齊到每個項目 */
+  -webkit-overflow-scrolling: touch; /* 為移動設備啟用平滑滾動 */
+}
+.c-discover-card-container::-webkit-scrollbar {
+  display: none;
+}

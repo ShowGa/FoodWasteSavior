@@ -21,6 +21,8 @@ import Favorite from "./pages/Favorite";
 import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
 import OrdersHistory from "./pages/OrdersHistory";
+import Discover from "./pages/Discover";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -37,6 +39,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/discover" element={<Discover />} />
             <Route path="/recommend" element={<Recommend />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/orders" element={<Orders />} />
