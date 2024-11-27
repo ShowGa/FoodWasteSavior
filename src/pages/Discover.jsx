@@ -15,10 +15,17 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
           </div>
         </div>
 
@@ -29,10 +36,17 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
           </div>
         </div>
 
@@ -43,10 +57,17 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
           </div>
         </div>
 
@@ -57,10 +78,17 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
           </div>
         </div>
 
@@ -71,10 +99,17 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
           </div>
         </div>
 
@@ -85,10 +120,17 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
-            <DiscoverListCard />
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
+
+            <Link to="/">
+              <DiscoverListCard />
+            </Link>
           </div>
         </div>
       </div>
