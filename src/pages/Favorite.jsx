@@ -1,11 +1,11 @@
 import React from "react";
 // components
-import CollectionCard from "../components/CollectionCard";
+import DiscoverListCard from "../components/DiscoverListCard";
 
 const Favorite = () => {
   return (
     <main className="p-[1.5rem]">
-      <div className="flex flex-col p-[1.5rem] min-h-screen bg-red-200">
+      <div className="flex flex-col p-[1.5rem] min-h-screen">
         {/* title */}
         <div className="flex justify-start items-center text-[1.5rem]">
           <h1 className="text-4xl">口袋名單</h1>
@@ -13,8 +13,12 @@ const Favorite = () => {
 
         {/* card */}
         <div className="flex flex-wrap justify-start items-center gap-4 mt-8">
-          <CollectionCard />
-          <CollectionCard />
+          <DiscoverListCard />
+          <DiscoverListCard />
+          <DiscoverListCard />
+          <DiscoverListCard />
+          <DiscoverListCard />
+          <DiscoverListCard />
         </div>
       </div>
     </main>
