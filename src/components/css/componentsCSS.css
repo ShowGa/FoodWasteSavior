@@ -106,3 +106,17 @@
 
   transition: transform 0.3s ease;
 }
+
+/* =========== OrderListCard.jsx =========== */
+.c-order-list-card {
+  /* px-4 py-6 rounded-lg relative bg-white shadow-md border border-gray-300 */
+  min-width: 25rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  position: relative;
+
+  cursor: pointer;
+}
