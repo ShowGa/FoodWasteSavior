@@ -71,23 +71,6 @@ const Header2 = () => {
       </div>
 
       {/* bottom */}
-      <div className="mx-auto p-4 border-b">
-        <div className="flex justify-center items-center space-x-4">
-          {/* Search */}
-          <div className="c-search-bar">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="c-search_input"
-            />
-          </div>
-
-          {/* Filter */}
-          <div className="c-filter-options">
-            <AiOutlineControl className="text-3xl" />
-          </div>
-        </div>
-      </div>
     </header>
   );
 };
@@ -121,4 +104,27 @@ export default Header2;
           <div className="c-header2-nav_item">
             <FaUserCircle />
           </div>
+*/
+
+/*
+
+============= Bottom ==============
+<div className="mx-auto p-4 border-b">
+        <div className="flex justify-center items-center space-x-4">
+
+          <div className="c-search-bar">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="c-search_input"
+            />
+          </div>
+
+
+          <div className="c-filter-options">
+            <AiOutlineControl className="text-3xl" />
+          </div>
+        </div>
+      </div>
+
 */

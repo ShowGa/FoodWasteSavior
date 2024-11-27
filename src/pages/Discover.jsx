@@ -7,7 +7,7 @@ import DiscoverListCard from "../components/DiscoverListCard";
 const Discover = () => {
   return (
     <main>
-      <div className="flex flex-col gap-8 mx-8 my-10">
+      <div className="flex flex-col gap-8 mx-8 my-2">
         <div>
           <div className="my-4">
             <h2 className="text-2xl font-bold">Collect Today</h2>
