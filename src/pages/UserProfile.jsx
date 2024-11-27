@@ -1,6 +1,7 @@
 import React from "react";
 // components
 import ContributionCard from "../components/ContributionCard";
+import ProfileFuntionCard from "../components/ProfileFuntionCard";
 // assets
 import { img1 } from "../assets";
 // react icons
@@ -35,6 +36,15 @@ const UserProfile = () => {
             {contributionState.map((state, index) => (
               <ContributionCard state={state} key={index} />
             ))}
+          </div>
+        </section>
+
+        {/* function */}
+        <section>
+          <h1 className="text-center text-4xl font-bold mb-4">功能選項</h1>
+
+          <div className="flex justify-center flex-wrap gap-6">
+            <ProfileFuntionCard />
           </div>
         </section>
 
