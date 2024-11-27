@@ -7,6 +7,8 @@ import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
 import StoreCard from "../components/StoreCard";
 // images
 import { img1, img2, img3 } from "../assets";
+// icons
+import { AiOutlineControl, AiOutlineSearch } from "react-icons/ai";
 
 const storeInfo = [
   {
@@ -63,7 +65,30 @@ const Search = () => {
     <main>
       <div className="flex flex-row">
         {/* left side */}
-        <section className="c-left-side basis-[63%] p-[1.5rem] bg-red-200">
+        <section className="basis-[63%] p-[1.5rem] ">
+          {/* <div className="bg-green-300 w-full">
+            <div>hi</div>
+            <div></div>
+          </div> */}
+
+          {/* search bar */}
+          <div className="flex justify-center items-center space-x-4 mb-4">
+            <div className="p-search-bar">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="p-search_input"
+              />
+              <button className="h-full">
+                <AiOutlineSearch className="text-3xl cursor-pointer" />
+              </button>
+            </div>
+
+            <div className="p-filter-options">
+              <AiOutlineControl className="text-3xl" />
+            </div>
+          </div>
+
           <div className="flex flex-wrap gap-4 w-full bg-white">
             {storeInfo.map((store, index) => (
               <StoreCard storeInfo={store} key={index} />
@@ -72,7 +97,7 @@ const Search = () => {
         </section>
 
         {/* right side */}
-        <section className="c-right-side basis-[37%] bg-blue-200">
+        <section className="basis-[37%] bg-blue-200">
           <div
             className="sticky bg-green-300 w-full"
             style={{

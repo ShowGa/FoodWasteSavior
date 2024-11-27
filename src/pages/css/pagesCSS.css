@@ -67,3 +67,27 @@
 .c-discover-card-container::-webkit-scrollbar {
   display: none;
 }
+
+/* =========== Search.jsx =========== */
+.p-search-bar {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.p-search_input {
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  width: 12.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+}
+
+.p-filter-options {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
