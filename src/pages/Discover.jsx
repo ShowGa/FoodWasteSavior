@@ -23,7 +23,7 @@ const Discover = () => {
           </div>
 
           <div className="c-discover-card-container">
-            <Link to="/order/123">
+            <Link to="/package/123">
               <DiscoverListCard />
             </Link>
 

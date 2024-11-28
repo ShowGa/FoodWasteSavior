@@ -23,7 +23,7 @@ import OrderDetail from "./pages/OrderDetail";
 import OrdersHistory from "./pages/OrdersHistory";
 import Discover from "./pages/Discover";
 import StoreDetail from "./pages/StoreDetail";
-
+import PackageDetail from "./pages/PackageDetail";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -47,6 +47,7 @@ function App() {
             <Route path="/orders-history" element={<OrdersHistory />} />
             <Route path="/order/:id" element={<OrderDetail />} />
             <Route path="/store/:id" element={<StoreDetail />} />
+            <Route path="/package/:id" element={<PackageDetail />} />
           </Route>
         </Route>
 
