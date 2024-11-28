@@ -3,11 +3,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 // components
 import DiscoverListCard from "../components/DiscoverListCard";
-
+// icons
+import { FaLocationDot } from "react-icons/fa6";
 const Discover = () => {
   return (
     <main>
       <div className="flex flex-col gap-8 mx-8 my-2">
+        {/* positioning */}
+        <div className="flex justify-center w-full">
+          <button className="border border-gray-300 rounded-lg p-2">
+            <FaLocationDot className="text-3xl" />
+          </button>
+        </div>
+
         <div>
           <div className="my-4">
             <h2 className="text-2xl font-bold">Collect Today</h2>
