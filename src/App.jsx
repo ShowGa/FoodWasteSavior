@@ -57,8 +57,6 @@ function App() {
         {/* No Layout */}
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignUp />} />
-        <Route path="/business-signup" element={<BusinessSignUp />} />
-        <Route path="/business-login" element={<BusinessLogin />} />
       </Routes>
     </BrowserRouter>
   );
