@@ -12,8 +12,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/Home";
 import UserLogin from "./pages/UserLogin";
 import UserSignUp from "./pages/UserSignUp";
-import BusinessSignUp from "./pages/BusinessSignUp";
-import BusinessLogin from "./pages/BusinessLogin";
 import UserProfile from "./pages/UserProfile";
 import Search from "./pages/Search";
 import Recommend from "./pages/Recommend";
