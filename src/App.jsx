@@ -14,7 +14,6 @@ import UserLogin from "./pages/UserLogin";
 import UserSignUp from "./pages/UserSignUp";
 import UserProfile from "./pages/UserProfile";
 import Search from "./pages/Search";
-import Recommend from "./pages/Recommend";
 import Favorite from "./pages/Favorite";
 import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
@@ -41,7 +40,6 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/search" element={<Search />} />
             <Route path="/discover" element={<Discover />} />
-            <Route path="/recommend" element={<Recommend />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders-history" element={<OrdersHistory />} />

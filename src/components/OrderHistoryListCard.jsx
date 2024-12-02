@@ -22,7 +22,7 @@ const OrderHistoryListCard = () => {
 
         <div>
           <h3 className="text-xl">Super Holly Bag</h3>
-          <p className="text-xs font-light text-yellow-500">★★★★★</p>
+          <p className="text-xs font-light text-yellow-500">pick up time</p>
         </div>
       </div>
     </div>
