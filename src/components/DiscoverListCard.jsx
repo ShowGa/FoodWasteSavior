@@ -48,8 +48,6 @@ const DiscoverListCard = () => {
 
         <div className="flex items-center justify-between mt-2">
           <div className="flex items-center gap-1 text-sm text-gray-500">
-            <p>★ 4.7</p>
-            <p> | </p>
             <p>1.2 mi</p>
           </div>
 
