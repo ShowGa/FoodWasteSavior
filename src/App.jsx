@@ -18,7 +18,6 @@ import Favorite from "./pages/Favorite";
 import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
 import OrdersHistory from "./pages/OrdersHistory";
-import Discover from "./pages/Discover";
 import StoreDetail from "./pages/StoreDetail";
 import PackageDetail from "./pages/PackageDetail";
 import OrderHistoryDetail from "./pages/OrderHistoryDetail";
@@ -39,7 +38,6 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/discover" element={<Discover />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders-history" element={<OrdersHistory />} />
