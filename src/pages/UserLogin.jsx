@@ -1,11 +1,12 @@
 import React from "react";
 // Assets
 import { img3 } from "../assets";
-// react icons
-import { FcGoogle } from "react-icons/fc";
+
 import { IoLogoApple } from "react-icons/io5";
 // material UI
 import { TextField, Button } from "@mui/material";
+// components
+import GoogleOAuth from "../components/GoogleOAuth";
 
 const UserLogin = () => {
   return (
@@ -34,11 +35,8 @@ const UserLogin = () => {
 
             {/* OAuth */}
             <div className="flex flex-col gap-4 my-4">
-              <button className="p-OAuth_btn">
-                <FcGoogle className="text-xl" />
-                <span>Continue with Google</span>
-              </button>
-              <button className="p-OAuth_btn">
+              <GoogleOAuth />
+              <button className="c-OAuth_btn">
                 <IoLogoApple className="text-2xl" />
                 <span>Continue with Apple</span>
               </button>

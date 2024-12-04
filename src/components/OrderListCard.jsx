@@ -19,7 +19,7 @@ const OrderListCard = ({ prop }) => {
         </div>
 
         <div>
-          <h3 className="text-xl">Super Bag</h3>
+          <h3 className="text-xl">John's Store</h3>
           <p className="text-xs font-light">
             11月27日 10:00 AM - 11月27日 11:00 AM
           </p>
