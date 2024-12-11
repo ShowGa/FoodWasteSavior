@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+// react router dom
+import { useNavigate } from "react-router-dom";
 // Assets
 import { img3 } from "../assets";
 
@@ -7,8 +9,19 @@ import { IoLogoApple } from "react-icons/io5";
 import { TextField, Button } from "@mui/material";
 // components
 import GoogleOAuth from "../components/GoogleOAuth";
+// zustand
+import useAuthUserStore from "../zustand/useAuthUser";
 
 const UserLogin = () => {
+  const { authUser } = useAuthUserStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authUser) {
+      navigate("/search");
+    }
+  }, []);
+
   return (
     <div>
       {/* logo */}
