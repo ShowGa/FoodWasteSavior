@@ -1,4 +1,7 @@
 import React from "react";
+// react router dom
+import { useNavigate } from "react-router-dom";
+
 // react icons
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
@@ -7,7 +10,14 @@ import app from "../firebase/firebase";
 // zustand
 import useAuthUserStore from "../zustand/useAuthUser";
 
+// service
+import AuthService from "../service/AuthService";
+
+// react hot toast
+import toast from "react-hot-toast";
+
 const GoogleOAuth = () => {
+  const navigate = useNavigate();
   const auth = getAuth(app);
 
   // zustand
@@ -19,17 +29,29 @@ const GoogleOAuth = () => {
     try {
       const resultFromFirebase = await signInWithPopup(auth, provider);
 
-      const data = {
-        userName: resultFromFirebase.user.displayName,
-        email: resultFromFirebase.user.email,
-        avatar: resultFromFirebase.user.photoURL,
-      };
+      const idToken = await resultFromFirebase.user.getIdToken();
 
-      // modify this later
-      loginSetAuthUser(data);
+      console.log(idToken);
 
-      console.log(data);
+      AuthService.firebaseGoogleOAuth({ idToken })
+        .then((response) => {
+          console.log(response);
+          const responseData = response.data.data;
+
+          loginSetAuthUser(responseData);
+          toast.success("登入成功 !");
+          // navigate to /search
+          navigate("/search");
+        })
+        .catch((error) => {
+          const message = error.response?.data.message || error;
+          toast.error(message);
+
+          console.log(message);
+        });
+      // console.log(data);
     } catch (error) {
+      toast.error("糟糕!出現了問題。請檢查網路是否連線，或稍後再試。");
       console.log(error);
     }
   };

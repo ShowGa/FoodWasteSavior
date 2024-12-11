@@ -5,6 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // layouts
 import Layouts from "./layouts/Layouts";
 import Layouts2 from "./layouts/Layouts2";
+
+// react hot toast
+import { Toaster } from "react-hot-toast";
+
 // components
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -52,6 +56,9 @@ function App() {
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-signup" element={<UserSignUp />} />
       </Routes>
+
+      {/* react hot toast */}
+      <Toaster />
     </BrowserRouter>
   );
 }
