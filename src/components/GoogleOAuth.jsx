@@ -9,6 +9,8 @@ import app from "../firebase/firebase";
 
 // zustand
 import useAuthUserStore from "../zustand/useAuthUser";
+import useAuthUserJwt from "../zustand/useAuthUserJwt";
+import useAuthUserPosition from "../zustand/useAuthUserPosition";
 
 // service
 import AuthService from "../service/AuthService";
@@ -22,6 +24,8 @@ const GoogleOAuth = () => {
 
   // zustand
   const { loginSetAuthUser } = useAuthUserStore();
+  const { loginSetJwt } = useAuthUserJwt();
+  const { loginSetUserPosition } = useAuthUserPosition();
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
@@ -36,9 +40,13 @@ const GoogleOAuth = () => {
       AuthService.firebaseGoogleOAuth({ idToken })
         .then((response) => {
           console.log(response);
-          const responseData = response.data.data;
+          const { userPosition, jwt, ...userInfo } = response.data.data;
 
-          loginSetAuthUser(responseData);
+          loginSetAuthUser(userInfo);
+          loginSetJwt(jwt);
+          loginSetUserPosition(userPosition);
+
+          // loginSetAuthUser();
           toast.success("登入成功 !");
           // navigate to /search
           navigate("/search");
