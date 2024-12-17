@@ -131,3 +131,46 @@
   border-radius: 8px;
   padding: 0.5rem;
 }
+
+/* =========== MapboxSearchPage.jsx =========== */
+/* make it more seeable */
+.c-mapbox-search-page_search-btn {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  z-index: 1000;
+
+  border-radius: 50px;
+
+  padding: 0.2rem;
+
+  color: #fff;
+  /* background: rgb(239, 14, 6); */
+
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+/* =========== animation effect =========== */
+.c-effect {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    background: linear-gradient(
+      135deg,
+      rgba(239, 14, 6, 1) 0%,
+      rgba(227, 207, 7, 1) 100%
+    );
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* =========== text gradient =========== */
+.hover-effect {
+}

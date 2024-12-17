@@ -140,7 +140,7 @@ const Search = () => {
         {/* right side */}
         <section className="basis-[37%] bg-red-300">
           <div
-            className="sticky w-full relative"
+            className="sticky w-full"
             style={{
               top: `${header2Height}px`,
               height: `${mapHeight}px`,
@@ -151,6 +151,7 @@ const Search = () => {
               setSearchStoreData={setSearchStoreData}
               userPositionForSearch={userPositionForSearch}
               setUserPositionForSearch={setUserPositionForSearch}
+              fetchStoreDataByPosition={fetchStoreDataByPosition}
             />
           </div>
         </section>
