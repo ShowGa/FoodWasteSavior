@@ -3,6 +3,7 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/stores";
 
 class StoreService {
+  // search page find storecard info
   getStoreDataByPosition(position) {
     const token = localStorage.getItem("auth-user-jwt");
 
@@ -15,6 +16,17 @@ class StoreService {
         },
       }
     );
+  }
+
+  // store detail page find store detail
+  getStoreDetail(storeId) {
+    const token = localStorage.getItem("auth-user-jwt");
+
+    return axios.get(API_URL + `/storedetail/${storeId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }
 

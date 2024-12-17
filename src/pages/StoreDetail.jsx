@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+// react router
+import { useParams } from "react-router-dom";
 // image
 import { img1, img2 } from "../assets";
 // icon
 import { GoLocation } from "react-icons/go";
+// service
+import StoreService from "../service/StoreService";
+// react hot toast
+import toast from "react-hot-toast";
 
 const StoreDetail = () => {
+  const { storeId } = useParams();
+
+  const [storeDetail, setStoreDetail] = useState({});
+
+  const handleGetStoreDetail = () => {
+    StoreService.getStoreDetail(storeId)
+      .then((response) => {
+        setStoreDetail(response.data.data);
+        toast.success("取得商家資料成功!");
+      })
+      .catch((error) => {
+        const message =
+          error.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    handleGetStoreDetail();
+  }, []);
+
   return (
     <main className="px-[12.25rem]">
       <section className="mt-10 rounded-xl">
@@ -99,6 +128,16 @@ const StoreDetail = () => {
 export default StoreDetail;
 
 /*
+============= Store Detail Search logic =============
+1. find store detail from the url params
+2. fetch store detail from the server
+3. display store detail
+
+============= Store Detail packagecard Search logic =============
+1. another api to get the package card info
+2. find by storeId
+3. display the package card info
+
 
 ============ left Detail ============
 <div className="border-b border-gray-200 pb-5">
