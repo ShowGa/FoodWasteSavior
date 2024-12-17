@@ -71,8 +71,14 @@ const Search = () => {
   const fetchStoreDataByPosition = () => {
     StoreService.getStoreDataByPosition(userPositionForSearch)
       .then((response) => {
-        setSearchStoreData(response.data.data);
-        toast.success("找到附近的商家囉!");
+        const storeData = response.data.data;
+
+        setSearchStoreData(storeData);
+        if (storeData.length > 0) {
+          toast.success("找到附近的商家囉!");
+        } else {
+          toast.error("這附近沒有商家喔!");
+        }
       })
       .catch((error) => {
         const message =
