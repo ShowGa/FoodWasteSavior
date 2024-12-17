@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // css
 import "./css/pagesCSS.css";
 // zustand
 import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
+import useAuthUserPositionStore from "../zustand/useAuthUserPosition";
+// services
+import StoreService from "../service/StoreService";
 // components
 import StoreCard from "../components/StoreCard";
 import MapboxSearchPage from "../components/MapboxSearchPage";
@@ -11,6 +14,8 @@ import { img1, img2, img3 } from "../assets";
 // icons
 import { AiOutlineControl, AiOutlineSearch } from "react-icons/ai";
 // mapbox
+// toast
+import toast from "react-hot-toast";
 
 const storeInfo = [
   {
@@ -46,7 +51,37 @@ const storeInfo = [
 const Search = () => {
   // zustand
   const { header2Height, mapHeight, setMapHeight } = useHeaderHeightStore();
+  const { userPosition } = useAuthUserPositionStore();
 
+  // search store data
+  const [searchStoreData, setSearchStoreData] = useState([]);
+  // user position
+  const [userPositionForSearch, setUserPositionForSearch] = useState(
+    userPosition || {
+      longitude: 121.5654,
+      latitude: 25.033,
+      radius: 1000,
+    }
+  );
+
+  // ===================== //
+  //   helper functions
+  // ===================== //
+
+  const fetchStoreDataByPosition = () => {
+    StoreService.getStoreDataByPosition(userPositionForSearch)
+      .then((response) => {
+        setSearchStoreData(response.data.data);
+        toast.success("找到附近的商家囉!");
+      })
+      .catch((error) => {
+        const message =
+          error.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+        console.log(error);
+      });
+  };
   // ===================== //
   //   helper functions
   // ===================== //
@@ -61,6 +96,10 @@ const Search = () => {
     return () => {
       window.removeEventListener("resize", updateInnerHeight);
     };
+  }, []);
+
+  useEffect(() => {
+    fetchStoreDataByPosition();
   }, []);
 
   return (
@@ -92,8 +131,8 @@ const Search = () => {
           </div>
 
           <div className="flex flex-wrap gap-4 w-full bg-white">
-            {storeInfo.map((store, index) => (
-              <StoreCard storeInfo={store} key={index} />
+            {searchStoreData.map((storeData, index) => (
+              <StoreCard storeInfo={storeData} key={storeData.storeId} />
             ))}
           </div>
         </section>
@@ -101,13 +140,18 @@ const Search = () => {
         {/* right side */}
         <section className="basis-[37%] bg-red-300">
           <div
-            className="sticky w-full"
+            className="sticky w-full relative"
             style={{
               top: `${header2Height}px`,
               height: `${mapHeight}px`,
             }}
           >
-            <MapboxSearchPage />
+            <MapboxSearchPage
+              searchStoreData={searchStoreData}
+              setSearchStoreData={setSearchStoreData}
+              userPositionForSearch={userPositionForSearch}
+              setUserPositionForSearch={setUserPositionForSearch}
+            />
           </div>
         </section>
       </div>
@@ -128,7 +172,15 @@ export default Search;
   1. create zustand for store the calc data of the mapHeight
 
 
-============= Adjust later ==============
-1.
+============= Search logic ==============
+1. postionSearchData useState
+  - default: userPosition
+  - change by moving the map
+  - change by clicking the card
+  - change distance by fileter slider dafault 1km
+
+  ============= functionality ==============
+1. click button to fetch store data by position
+2. drag the map to change the position
 
 */
