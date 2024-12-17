@@ -9,6 +9,8 @@ import { GoLocation } from "react-icons/go";
 import StoreService from "../service/StoreService";
 // react hot toast
 import toast from "react-hot-toast";
+// image
+import { star, comments } from "../assets";
 
 const StoreDetail = () => {
   const { storeId } = useParams();
@@ -34,60 +36,87 @@ const StoreDetail = () => {
     handleGetStoreDetail();
   }, []);
 
+  // private Integer storeId;
+  //   private String storeName;
+  //   private String coverImageUrl;
+  //   private String logoImageUrl;
+  //   private String about;
+  //   private Double storeRating;
+  //   private Integer storeRatingCount;
+  //   // address table field
+  //   private String storeAddress;
+
   return (
-    <main className="px-[12.25rem]">
+    <main className="px-[12.25rem] max-lg:px-5">
       <section className="mt-10 rounded-xl">
-        <div className="w-full h-[30rem]">
+        <div className="w-full h-[30rem] max-lg:h-[15rem]">
           <img
-            src={img1}
+            src={storeDetail.coverImageUrl}
             alt=""
             className="rounded-xl w-full h-full object-cover"
           />
         </div>
       </section>
 
-      <section className="flex mt-10">
+      <section className="flex mt-10 max-lg:flex-col">
         <div className="basis-[63%] pr-[5%]">
           <div className="border-b border-gray-200 pb-5">
             <div className="flex items-center gap-5 text-xl">
               <div className="w-[5rem] h-[5rem] rounded-full border border-gray-400">
                 <img
-                  src={img2}
+                  src={storeDetail.logoImageUrl}
                   alt=""
                   className="rounded-full w-full h-full object-cover"
                 />
               </div>
 
               <div>
-                <h3 className="text-xl font-bold">John's Bakery</h3>
+                <h3 className="text-xl font-bold">{storeDetail.storeName}</h3>
                 <p className="flex items-center gap-2 text-sm font-light">
                   <GoLocation />
-                  <span>臺北市信義區信義路五段7號</span>
+                  <span>{storeDetail.storeAddress}</span>
                 </p>
               </div>
             </div>
           </div>
 
           <div className="border-b border-gray-200 py-5">
-            <h3 className="text-xl font-bold">關於我們</h3>
-            <p className="text-lg font-light">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              omnis quaerat nulla vel aliquam, perspiciatis temporibus fuga.
-              Blanditiis iure magnam ducimus enim! Illo repudiandae, qui
-              corporis at delectus in doloribus? Lorem, ipsum dolor sit amet
-              consectetur adipisicing elit. Dolor omnis quaerat nulla vel
-              aliquam, perspiciatis temporibus fuga. Blanditiis iure magnam
-              ducimus enim! Illo repudiandae, qui corporis at delectus in
-              doloribus?
-            </p>
+            <div>
+              <h3 className="text-xl font-bold">關於我們</h3>
+              <p className="text-lg font-light">{storeDetail.about}</p>
+            </div>
 
-            <div className="mt-2">Map</div>
+            <div className="flex justify-evenly gap-2 mt-6">
+              <div className="flex flex-col items-center gap-2">
+                <img src={star} alt="" className="w-10 h-10" />
+                <p className="text-xl font-bold">{storeDetail.storeRating}</p>
+                <p className="text-sm font-light">顧客滿意度</p>
+              </div>
+
+              <div className="w-[1px] h-[6rem] bg-gray-400"></div>
+
+              <div className="flex flex-col items-center gap-2">
+                <img src={comments} alt="" className="w-10 h-10" />
+                <p className="text-xl font-bold">
+                  {storeDetail.storeRatingCount}
+                </p>
+                <p className="text-sm font-light">次顧客評論</p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
+              vero iste aliquid eum, distinctio dolor doloremque sunt
+              consequuntur odit quibusdam ratione, ipsa, fugit amet commodi
+              quaerat! Ea, commodi. Nihil, veritatis.
+            </div>
           </div>
         </div>
 
         <div className="basis-[37%] w-full">
           {/* store product */}
           <div className="flex flex-col gap-5 border border-gray-200 rounded-xl p-7 items-center top-0 w-full shadow-lg">
+            <div className="text-2xl font-bold">我們的商品</div>
             {/* map this */}
             <div className="flex items-center gap-5 p-3 border border-gray-200 rounded-xl w-full shadow-sm">
               <div className="w-[5rem] h-[5rem] rounded-xl">
