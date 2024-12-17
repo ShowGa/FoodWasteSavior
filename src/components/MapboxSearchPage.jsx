@@ -52,7 +52,7 @@ const MapboxSearchPage = ({
         }}
         style={{ width: "100%", height: "100%" }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        // mapboxAccessToken={MAPBOX_TOKEN}
+        mapboxAccessToken={MAPBOX_TOKEN}
         onMove={handleDragLogic}
         onMoveEnd={() => {
           setOnMoving(false);

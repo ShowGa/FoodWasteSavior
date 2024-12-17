@@ -1,21 +1,45 @@
 import React, { useState, useEffect } from "react";
 // react router
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // image
 import { img1, img2 } from "../assets";
 // icon
 import { GoLocation } from "react-icons/go";
 // service
 import StoreService from "../service/StoreService";
+import PackageService from "../service/PackageService";
 // react hot toast
 import toast from "react-hot-toast";
 // image
 import { star, comments } from "../assets";
 
+const PackageCard = ({ packageCardInfo }) => {
+  return (
+    <Link to={`/package/${packageCardInfo.packageId}`} className="w-full">
+      <div className="flex items-center gap-5 p-3 border border-gray-200 rounded-xl w-full shadow-sm">
+        <div className="w-[5rem] h-[5rem] rounded-xl">
+          <img
+            src={img1}
+            alt=""
+            className="rounded-full w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <h3 className="text-lg font-bold">{packageCardInfo.packageName}</h3>
+          <p className="text-lg font-bold">
+            NT$ {packageCardInfo.discountPrice}
+          </p>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 const StoreDetail = () => {
   const { storeId } = useParams();
 
   const [storeDetail, setStoreDetail] = useState({});
+  const [packageCards, setPackageCards] = useState([]);
 
   const handleGetStoreDetail = () => {
     StoreService.getStoreDetail(storeId)
@@ -32,19 +56,24 @@ const StoreDetail = () => {
       });
   };
 
+  const handleGetPackageCard = () => {
+    PackageService.getStoreDetailPackageCard(storeId)
+      .then((response) => {
+        setPackageCards(response.data.data);
+      })
+      .catch((error) => {
+        const message =
+          error.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     handleGetStoreDetail();
+    handleGetPackageCard();
   }, []);
-
-  // private Integer storeId;
-  //   private String storeName;
-  //   private String coverImageUrl;
-  //   private String logoImageUrl;
-  //   private String about;
-  //   private Double storeRating;
-  //   private Integer storeRatingCount;
-  //   // address table field
-  //   private String storeAddress;
 
   return (
     <main className="px-[12.25rem] max-lg:px-5">
@@ -117,36 +146,17 @@ const StoreDetail = () => {
           {/* store product */}
           <div className="flex flex-col gap-5 border border-gray-200 rounded-xl p-7 items-center top-0 w-full shadow-lg">
             <div className="text-2xl font-bold">我們的商品</div>
-            {/* map this */}
-            <div className="flex items-center gap-5 p-3 border border-gray-200 rounded-xl w-full shadow-sm">
-              <div className="w-[5rem] h-[5rem] rounded-xl">
-                <img
-                  src={img1}
-                  alt=""
-                  className="rounded-full w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Product Name</h3>
-                <p className="text-xs font-light">今日 : 10:00 AM - 11:00 AM</p>
-                <p className="text-lg font-bold">NT$ 100</p>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-5 p-3 border border-gray-200 rounded-xl w-full shadow-sm">
-              <div className="w-[5rem] h-[5rem] rounded-xl">
-                <img
-                  src={img1}
-                  alt=""
-                  className="rounded-full w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Product Name</h3>
-                <p className="text-xs font-light">今日 : 10:00 AM - 11:00 AM</p>
-                <p className="text-lg font-bold">NT$ 100</p>
-              </div>
-            </div>
+            {/* map this */}
+            {packageCards.map((packageCardInfo) => (
+              <PackageCard
+                key={packageCardInfo.packageId}
+                packageCardInfo={packageCardInfo}
+              />
+            ))}
+            {packageCards.length === 0 && (
+              <div className="text-lg font-light">目前沒有任何商品</div>
+            )}
           </div>
         </div>
       </section>
