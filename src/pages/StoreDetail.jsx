@@ -19,7 +19,7 @@ const PackageCard = ({ packageCardInfo }) => {
       <div className="flex items-center gap-5 p-3 border border-gray-200 rounded-xl w-full shadow-sm">
         <div className="w-[5rem] h-[5rem] rounded-xl">
           <img
-            src={img1}
+            src={packageCardInfo.packageCoverImage}
             alt=""
             className="rounded-full w-full h-full object-cover"
           />
