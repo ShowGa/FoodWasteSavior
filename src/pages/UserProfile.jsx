@@ -28,11 +28,14 @@ const contributionState = [
   },
 ];
 
-const CheckerTag = () => {
+const CheckerTag = ({ isvalid, label }) => {
   return (
-    <div className="flex justify-center items-center gap-2">
-      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-      <p>已驗證</p>
+    <div
+      className={`flex justify-center items-center gap-2 border border-gray-300 rounded-full px-2 py-1 ${
+        isvalid ? "bg-green-500" : "bg-red-500"
+      } transition-all duration-500`}
+    >
+      <p className="text-sm text-gray-100 font-bold">{label}</p>
     </div>
   );
 };
@@ -42,12 +45,23 @@ const UserProfile = () => {
   const { authUser, loginSetAuthUser } = useAuthUserStore();
 
   const [userProfileForm, setUserProfileForm] = useState(authUser);
+  const [showTag, setShowTag] = useState(false);
+  const [inputValidation, setInputValidation] = useState({
+    minLength: true,
+    noSpace: true,
+    noSymbol: true,
+  });
 
   const handleUpdateUserProfile = (e) => {
     e.preventDefault();
 
     if (userProfileForm === authUser) {
       toast.error("請先修改個人資料");
+      return;
+    }
+
+    if (!inputValidation.minLength || !inputValidation.noSpace) {
+      toast.error("資料格式不符合需求!");
       return;
     }
 
@@ -74,7 +88,18 @@ const UserProfile = () => {
       return;
     }
 
+    setShowTag(true);
+    handleCheckInputValidation(e);
     setUserProfileForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCheckInputValidation = (e) => {
+    const value = e.target.value;
+
+    const minLength = value.length >= 6 && value.length <= 16;
+    const noSpace = !value.includes(" ");
+    const noSymbol = /^[a-zA-Z0-9\u4e00-\u9fa5]+$/.test(value);
+    setInputValidation({ minLength, noSpace, noSymbol });
   };
 
   return (
@@ -129,7 +154,22 @@ const UserProfile = () => {
                   value={userProfileForm.username}
                   onChange={handleChangeUserProfileForm}
                 />
-                <CheckerTag />
+                {showTag && (
+                  <div className="flex items-center gap-2">
+                    <CheckerTag
+                      isvalid={inputValidation.minLength}
+                      label="6 ~ 16個字元"
+                    />
+                    <CheckerTag
+                      isvalid={inputValidation.noSpace}
+                      label="沒有空格"
+                    />
+                    <CheckerTag
+                      isvalid={inputValidation.noSymbol}
+                      label="英文輸入"
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-2">
                 <h2 className="text-xl">電子信箱</h2>
