@@ -166,7 +166,7 @@ const UserProfile = () => {
                     />
                     <CheckerTag
                       isvalid={inputValidation.noSymbol}
-                      label="英文輸入"
+                      label="沒有特殊符號"
                     />
                   </div>
                 )}
