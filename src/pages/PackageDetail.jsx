@@ -11,8 +11,27 @@ import toast from "react-hot-toast";
 
 const PackageDetail = () => {
   const [packageDetail, setPackageDetail] = useState({});
+  const [timesUp, setTimesUp] = useState(false);
 
   const { packageId } = useParams();
+
+  const checkTimeUp = (startTime) => {
+    // 取得台灣當前時間的 HH:mm:ss 格式
+    const taiwanTime = new Date().toLocaleTimeString("en-US", {
+      timeZone: "Asia/Taipei",
+      hour12: false, // 24小時制
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
+    // 直接比較時間字串
+    if (taiwanTime >= startTime) {
+      setTimesUp(true);
+    } else {
+      setTimesUp(true);
+    }
+  };
 
   const handleGetPackageDetail = async () => {
     PackageService.getPackageDetail(packageId)
@@ -31,6 +50,10 @@ const PackageDetail = () => {
   useEffect(() => {
     handleGetPackageDetail();
   }, []);
+
+  useEffect(() => {
+    checkTimeUp(packageDetail?.packageStartTime, packageDetail?.packageEndTime);
+  }, [packageDetail]);
 
   return (
     <main className="px-[12.25rem]">
@@ -85,7 +108,7 @@ const PackageDetail = () => {
           </div>
         </div>
 
-        <div className="basis-[37%] ml-[10%] w-full">
+        <div className="basis-[37%] ml-[10%] w-full relative">
           {/* add some shadow */}
           <div className="flex flex-col gap-5 border border-gray-200 rounded-xl p-7 items-center top-0 w-full text-center shadow-lg">
             <div>
@@ -98,9 +121,20 @@ const PackageDetail = () => {
               </h3>
             </div>
 
-            <button className="rounded-lg p-2 w-full text-white font-bold bg-secondaryTheme">
-              預約
+            <button
+              className={`rounded-lg p-2 w-full text-white font-bold ${
+                timesUp ? "bg-gray-400 cursor-not-allowed" : "bg-secondaryTheme"
+              }`}
+            >
+              {timesUp ? "今日預約已結束" : "預約"}
             </button>
+
+            {/* tag for quantityRemianing */}
+            <div className="absolute top-2 left-2 bg-primaryTheme rounded-full p-1 bg-secondaryThemeHover text-white">
+              <h3 className="text-xs">
+                剩餘{packageDetail?.quantityRemaining}
+              </h3>
+            </div>
           </div>
         </div>
       </section>
