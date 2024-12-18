@@ -29,7 +29,7 @@ const PackageDetail = () => {
     if (taiwanTime >= startTime) {
       setTimesUp(true);
     } else {
-      setTimesUp(true);
+      setTimesUp(false);
     }
   };
 
