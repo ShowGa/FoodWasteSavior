@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 // image
-import { img1 } from "../assets";
 // icon
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { IoCalendarClearOutline } from "react-icons/io5";
 import { GoClock } from "react-icons/go";
-import { IoLocationOutline } from "react-icons/io5";
-import { main } from "motion/react-client";
+// service
+import PackageService from "../service/PackageService";
 
 const PackageDetail = () => {
+  const [packageDetail, setPackageDetail] = useState({});
+
+  const { packageId } = useParams();
+
+  const handleGetPackageDetail = async () => {
+    PackageService.getPackageDetail(packageId)
+      .then((res) => {
+        setPackageDetail(res.data.data);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    handleGetPackageDetail();
+  }, []);
+
   return (
     <main className="px-[12.25rem]">
       <section className="mt-10 rounded-xl">
         <div className="w-full h-[30rem]">
           <img
-            src={img1}
+            src={packageDetail?.packageCoverImageUrl}
             alt=""
             className="rounded-xl w-full h-full object-cover"
           />
@@ -26,41 +47,38 @@ const PackageDetail = () => {
           <div className="border-b border-gray-200 pb-5">
             <div className="flex items-center gap-2 text-xl">
               <HiOutlineShoppingBag />
-              <h3>John's Store 驚喜包</h3>
+              <h3>{packageDetail?.packageName}</h3>
             </div>
 
             <div className="flex items-center mt-2 gap-2 text-xl">
               <GoClock className="" />
-              <h3 className="">11月28日 10:00 AM - 11:00 AM</h3>
+              <h3 className="">
+                今日 {packageDetail?.packageStartTime} -{" "}
+                {packageDetail?.packageEndTime}
+              </h3>
             </div>
           </div>
 
-          <div className="border-b border-gray-200 py-5">
+          {/* <div className="border-b border-gray-200 py-5">
             <div className="flex items-center gap-2 text-xl">
               <IoLocationOutline />
               <div>
                 <h3>臺北市信義區信義路五段7號</h3>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="border-b border-gray-200 py-5">
             <h3 className="text-xl font-bold">驚喜包裡有甚麼</h3>
-            <p className="text-lg font-light mt">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              omnis quaerat nulla vel aliquam, perspiciatis temporibus fuga.
-              Blanditiis iure magnam ducimus enim! Illo repudiandae, qui
-              corporis at delectus in doloribus?
+            <p className="text-lg font-light mt-2">
+              {packageDetail?.packageDescription}
             </p>
           </div>
 
           <div className="border-b border-gray-200 py-5">
             <h3 className="text-xl font-bold">成分與過敏原</h3>
-            <p className="text-lg font-light mt">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              omnis quaerat nulla vel aliquam, perspiciatis temporibus fuga.
-              Blanditiis iure magnam ducimus enim! Illo repudiandae, qui
-              corporis at delectus in doloribus?
+            <p className="text-lg font-light mt-2">
+              {packageDetail?.packageAllergenDesc || "無"}
             </p>
           </div>
         </div>
@@ -69,11 +87,17 @@ const PackageDetail = () => {
           {/* add some shadow */}
           <div className="flex flex-col gap-5 border border-gray-200 rounded-xl p-7 items-center top-0 w-full text-center shadow-lg">
             <div>
-              <h3 className="text-3xl font-bold">NT$ 100</h3>
+              {/* 劃掉 */}
+              <p className="text-sm font-light text-gray-400 line-through">
+                NT$ {packageDetail?.originPrice}
+              </p>
+              <h3 className="text-3xl font-bold">
+                NT$ {packageDetail?.discountPrice}
+              </h3>
             </div>
 
-            <button className="rounded-lg p-2 w-full text-white bg-secondaryTheme">
-              購買
+            <button className="rounded-lg p-2 w-full text-white font-bold bg-secondaryTheme">
+              預約
             </button>
           </div>
         </div>

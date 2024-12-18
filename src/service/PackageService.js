@@ -12,6 +12,16 @@ class PackageService {
       },
     });
   }
+
+  getPackageDetail(packageId) {
+    const token = JSON.parse(localStorage.getItem("auth-user-jwt"));
+
+    return axios.get(API_URL + `/packagedetail/${packageId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
 
 export default new PackageService();
