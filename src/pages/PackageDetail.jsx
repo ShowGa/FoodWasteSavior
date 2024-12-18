@@ -6,6 +6,8 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { GoClock } from "react-icons/go";
 // service
 import PackageService from "../service/PackageService";
+// toast
+import toast from "react-hot-toast";
 
 const PackageDetail = () => {
   const [packageDetail, setPackageDetail] = useState({});
