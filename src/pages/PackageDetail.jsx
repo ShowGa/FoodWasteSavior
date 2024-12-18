@@ -123,7 +123,9 @@ const PackageDetail = () => {
 
             <button
               className={`rounded-lg p-2 w-full text-white font-bold ${
-                timesUp ? "bg-gray-400 cursor-not-allowed" : "bg-secondaryTheme"
+                timesUp
+                  ? "bg-gray-400 pointer-events-none"
+                  : "bg-secondaryTheme"
               }`}
             >
               {timesUp ? "今日預約已結束" : "預約"}
