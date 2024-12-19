@@ -69,8 +69,9 @@ const UserProfile = () => {
       .then((res) => {
         const userProfile = res.data.data;
         loginSetAuthUser(userProfile);
-        // setUserProfileForm(userProfile);
+        setUserProfileForm(userProfile);
         toast.success("更新個人資料成功");
+        setShowTag(false);
       })
       .catch((err) => {
         const message =
