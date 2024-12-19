@@ -6,6 +6,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { GoClock } from "react-icons/go";
 // service
 import PackageService from "../service/PackageService";
+import FavoriteService from "../service/FavoriteService";
 // toast
 import toast from "react-hot-toast";
 // icon
@@ -14,11 +15,37 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 const PackageDetail = () => {
   const [packageDetail, setPackageDetail] = useState({});
   const [timesUp, setTimesUp] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(
-    packageDetail?.isFavorite || false
-  );
+  const [canSubmit, setCanSubmit] = useState(true);
 
   const { packageId } = useParams();
+
+  console.log(packageDetail.isFavorite);
+
+  const handleSubmitFavorite = () => {
+    if (!canSubmit) {
+      toast.error("拜託別搞破壞!");
+      return;
+    }
+
+    FavoriteService.updateFavorite(packageId)
+      .then((res) => {
+        const isFavorite = res.data.data;
+        // check if true or false from backend new data
+        if (isFavorite) {
+          toast.success("已加入最愛");
+        } else {
+          toast.success("已移除最愛");
+        }
+        setPackageDetail({ ...packageDetail, isFavorite });
+        setCanSubmit(false);
+        setTimeout(() => {
+          setCanSubmit(true);
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const checkTimeUp = (startTime) => {
     // 取得台灣當前時間的 HH:mm:ss 格式
@@ -70,16 +97,19 @@ const PackageDetail = () => {
             className="rounded-xl w-full h-full object-cover"
           />
         </div>
-        <div className="rounded-full bg-black bg-opacity-50 absolute top-2 right-2 w-10 h-10">
+        <button
+          className="rounded-full bg-black bg-opacity-50 absolute bottom-4 right-4 w-10 h-10 cursor-pointer"
+          onClick={handleSubmitFavorite}
+        >
           {/* make this element horizentally and vertically center in the div */}
           <p className="flex items-center justify-center h-full text-2xl">
-            {isFavorite ? (
+            {packageDetail?.isFavorite ? (
               <FaHeart className="text-white" />
             ) : (
               <FaRegHeart className="text-white" />
             )}
           </p>
-        </div>
+        </button>
       </section>
 
       <section className="flex mt-10">
