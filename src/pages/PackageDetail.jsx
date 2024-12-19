@@ -88,9 +88,9 @@ const PackageDetail = () => {
   }, [packageDetail]);
 
   return (
-    <main className="px-[12.25rem]">
+    <main className="px-[12.25rem] max-xl:px-[8rem] max-lg:px-[4rem] max-md:px-2">
       <section className="mt-10 rounded-xl relative">
-        <div className="w-full h-[30rem]">
+        <div className="w-full h-[30rem] max-lg:h-[18rem]">
           <img
             src={packageDetail?.packageCoverImageUrl}
             alt=""
@@ -112,10 +112,17 @@ const PackageDetail = () => {
         </button>
       </section>
 
-      <section className="flex mt-10">
+      <section className="flex mt-10 max-lg:flex-col max-lg:items-center">
         <div className="basis-[63%]">
           <div className="border-b border-gray-200 pb-5">
-            <div className="flex items-center gap-2 text-xl">
+            {/* tag for quantityRemianing */}
+            <div className="bottom-4 w-fit left-4 bg-primary rounded-full p-1 px-2 text-white font-bold">
+              <h3 className="text-xl max-lg:text-sm">
+                剩餘{packageDetail?.quantityRemaining}
+              </h3>
+            </div>
+
+            <div className="flex items-center gap-2 text-xl mt-4">
               <HiOutlineShoppingBag />
               <h3>{packageDetail?.packageName}</h3>
             </div>
@@ -153,7 +160,7 @@ const PackageDetail = () => {
           </div>
         </div>
 
-        <div className="basis-[37%] ml-[10%] w-full relative">
+        <div className="basis-[37%] ml-[10%] w-full max-w-[20rem] relative max-lg:ml-0 max-lg:mt-10">
           {/* add some shadow */}
           <div className="flex flex-col gap-5 border border-gray-200 rounded-xl p-7 items-center top-0 w-full text-center shadow-lg">
             <div>
@@ -175,13 +182,6 @@ const PackageDetail = () => {
             >
               {timesUp ? "今日預約已結束" : "預約"}
             </button>
-
-            {/* tag for quantityRemianing */}
-            <div className="absolute top-2 left-2 bg-primaryTheme rounded-full p-1 bg-secondaryThemeHover text-white">
-              <h3 className="text-xs">
-                剩餘{packageDetail?.quantityRemaining}
-              </h3>
-            </div>
           </div>
         </div>
       </section>
