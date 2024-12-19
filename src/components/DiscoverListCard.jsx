@@ -7,6 +7,8 @@ import { FaRegHeart } from "react-icons/fa";
 
 const DiscoverListCard = () => {
   // this will replace with backend data
+
+  // this will be the cardData from backend => change later
   const [isFavorite, setIsFavorite] = useState(true);
 
   return (

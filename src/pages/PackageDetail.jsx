@@ -8,10 +8,13 @@ import { GoClock } from "react-icons/go";
 import PackageService from "../service/PackageService";
 // toast
 import toast from "react-hot-toast";
+// icon
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const PackageDetail = () => {
   const [packageDetail, setPackageDetail] = useState({});
   const [timesUp, setTimesUp] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(true);
 
   const { packageId } = useParams();
 
@@ -57,13 +60,23 @@ const PackageDetail = () => {
 
   return (
     <main className="px-[12.25rem]">
-      <section className="mt-10 rounded-xl">
+      <section className="mt-10 rounded-xl relative">
         <div className="w-full h-[30rem]">
           <img
             src={packageDetail?.packageCoverImageUrl}
             alt=""
             className="rounded-xl w-full h-full object-cover"
           />
+        </div>
+        <div className="rounded-full bg-black bg-opacity-50 absolute top-2 right-2 w-10 h-10">
+          {/* make this element horizentally and vertically center in the div */}
+          <p className="flex items-center justify-center h-full text-2xl">
+            {isFavorite ? (
+              <FaHeart className="text-white" />
+            ) : (
+              <FaRegHeart className="text-white" />
+            )}
+          </p>
         </div>
       </section>
 
