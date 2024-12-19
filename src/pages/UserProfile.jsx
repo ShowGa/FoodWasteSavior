@@ -10,6 +10,7 @@ import { img1 } from "../assets";
 import { FaTree, FaMoneyBill } from "react-icons/fa";
 // service
 import OrderService from "../service/OrderService";
+import UserService from "../service/UserService";
 // toast
 import toast from "react-hot-toast";
 
@@ -195,6 +196,7 @@ const UserProfile = () => {
                   type="email"
                   className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   name="email"
+                  disabled
                   value={userProfileForm.email}
                   onChange={handleChangeUserProfileForm}
                 />
