@@ -14,7 +14,9 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 const PackageDetail = () => {
   const [packageDetail, setPackageDetail] = useState({});
   const [timesUp, setTimesUp] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(
+    packageDetail?.isFavorite || false
+  );
 
   const { packageId } = useParams();
 
