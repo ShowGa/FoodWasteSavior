@@ -9,7 +9,7 @@ import { img1 } from "../assets";
 // react icons
 import { FaTree, FaMoneyBill } from "react-icons/fa";
 // service
-import UserService from "../service/UserService";
+import OrderService from "../service/OrderService";
 // toast
 import toast from "react-hot-toast";
 
@@ -45,12 +45,25 @@ const UserProfile = () => {
   const { authUser, loginSetAuthUser } = useAuthUserStore();
 
   const [userProfileForm, setUserProfileForm] = useState(authUser);
+  const [userContribution, setUserContribution] = useState(null);
   const [showTag, setShowTag] = useState(false);
   const [inputValidation, setInputValidation] = useState({
     minLength: true,
     noSpace: true,
     noSymbol: true,
   });
+
+  const handleGetUserContribution = () => {
+    OrderService.getUserContribution(authUser.userId)
+      .then((res) => {
+        const contribution = res.data.data;
+        setUserContribution(contribution);
+        console.log(contribution);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleUpdateUserProfile = (e) => {
     e.preventDefault();
@@ -102,6 +115,10 @@ const UserProfile = () => {
     const noSymbol = /^[a-zA-Z0-9\u4e00-\u9fa5]+$/.test(value);
     setInputValidation({ minLength, noSpace, noSymbol });
   };
+
+  useEffect(() => {
+    handleGetUserContribution();
+  }, []);
 
   return (
     <main className="px-[4rem] py-[1.5rem]">
@@ -207,6 +224,6 @@ export default UserProfile;
 
 
 ========== todo ==========
-1. RWD
+1. Contribution 的資料要計算公式，並顯示在 user profile 上
 
 */
