@@ -20,6 +20,15 @@ class OrderService {
       },
     });
   }
+
+  getOrderList(userId) {
+    const token = JSON.parse(localStorage.getItem("auth-user-jwt"));
+    return axios.get(API_URL + `/user-order-list/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
 
 export default new OrderService();
