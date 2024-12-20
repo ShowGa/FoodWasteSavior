@@ -14,8 +14,6 @@ import toast from "react-hot-toast";
 import { star, comments } from "../assets";
 
 const PackageCard = ({ packageCardInfo }) => {
-  console.log(packageCardInfo);
-
   return (
     <Link to={`/package/${packageCardInfo.packageId}`} className="w-full">
       <div className="flex items-center gap-5 p-3 border border-gray-200 rounded-xl w-full shadow-sm">

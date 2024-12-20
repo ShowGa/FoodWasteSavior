@@ -19,8 +19,6 @@ const PackageDetail = () => {
 
   const { packageId } = useParams();
 
-  console.log(packageDetail.isFavorite);
-
   const handleSubmitFavorite = () => {
     if (!canSubmit) {
       toast.error("拜託別搞破壞!");
@@ -43,6 +41,10 @@ const PackageDetail = () => {
         }, 1500);
       })
       .catch((err) => {
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
         console.log(err);
       });
   };

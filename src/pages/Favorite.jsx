@@ -16,7 +16,6 @@ const Favorite = () => {
     FavoriteService.getFavoriteList(authUser.userId)
       .then((res) => {
         setFavoriteList(res.data.data);
-        console.log(res.data.data);
       })
       .catch((err) => {
         const message =
@@ -42,7 +41,11 @@ const Favorite = () => {
         {/* card */}
         <div className="flex flex-wrap justify-start items-center gap-4 mt-8">
           {favoriteList.map((item) => (
-            <DiscoverListCard key={item.packageId} packageData={item} />
+            <DiscoverListCard
+              key={item.packageId}
+              packageData={item}
+              setFavoriteList={setFavoriteList}
+            />
           ))}
         </div>
       </div>
