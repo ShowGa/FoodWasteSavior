@@ -11,6 +11,15 @@ class OrderService {
       },
     });
   }
+
+  createOrder(orderData) {
+    const token = JSON.parse(localStorage.getItem("auth-user-jwt"));
+    return axios.post(API_URL + "/createorder", orderData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
 
 export default new OrderService();

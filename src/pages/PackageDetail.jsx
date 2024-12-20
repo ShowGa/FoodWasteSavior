@@ -7,17 +7,21 @@ import { GoClock } from "react-icons/go";
 // service
 import PackageService from "../service/PackageService";
 import FavoriteService from "../service/FavoriteService";
+// components
+import OrderModal from "../components/OrderModal";
 // toast
 import toast from "react-hot-toast";
 // icon
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const PackageDetail = () => {
+  const { packageId } = useParams();
+
   const [packageDetail, setPackageDetail] = useState({});
   const [timesUp, setTimesUp] = useState(false);
   const [canSubmit, setCanSubmit] = useState(true);
 
-  const { packageId } = useParams();
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmitFavorite = () => {
     if (!canSubmit) {
@@ -181,12 +185,17 @@ const PackageDetail = () => {
                   ? "bg-gray-400 pointer-events-none"
                   : "bg-secondaryTheme"
               }`}
+              onClick={() => setShowModal(true)}
             >
               {timesUp ? "今日預約已結束" : "預約"}
             </button>
           </div>
         </div>
       </section>
+
+      {showModal && (
+        <OrderModal setShowModal={setShowModal} packageDetail={packageDetail} />
+      )}
     </main>
   );
 };
