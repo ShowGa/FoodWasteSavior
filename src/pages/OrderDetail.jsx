@@ -1,30 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 // icons
 import { IoLocationOutline } from "react-icons/io5";
 // image
 import { img2 } from "../assets";
 import { img } from "motion/react-client";
+// service
+import OrderService from "../service/OrderService";
+// toast
+import toast from "react-hot-toast";
+// utils
+import { formatTime, categoryName, orderStatus } from "../utils/convertor";
 
 const OrderDetail = () => {
+  const { orderId } = useParams();
+
+  const [orderDetail, setOrderDetail] = useState(null);
+
+  const handleGetOrderDetail = () => {
+    OrderService.getOrderDetail(orderId)
+      .then((res) => {
+        setOrderDetail(res.data.data);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+      });
+  };
+
+  useEffect(() => {
+    handleGetOrderDetail();
+  }, []);
+
   return (
     <main>
       <div className="flex flex-col gap-4 items-center px-[4rem] py-[1.5rem]">
-        <h1 className="text-4xl font-bold mb-4">Order Detail</h1>
+        <h1 className="text-4xl font-bold mb-4">訂單詳情</h1>
 
         {/* Store Information */}
         <div className="max-w-[30rem] w-full">
           <section className="flex flex-col justify-between items-center gap-4 py-[1.5rem] border border-gray-300 rounded-lg shadow-md">
             <div className="w-[5rem] h-[5rem]">
-              <img src={img2} alt="" className="rounded-full object-cover" />
+              <img
+                src={orderDetail?.storeLogo}
+                alt=""
+                className="rounded-full object-cover"
+              />
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold leading-none">John's Store</p>
-              <span>123 Main St, Anytown, USA</span>
+              <p className="text-2xl font-bold leading-none">
+                {orderDetail?.storeName}
+              </p>
+              <span>{orderDetail?.storeAddress}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span>Find Store</span>
-              <IoLocationOutline />
-            </div>
+            <a
+              href={`https://www.google.com/maps/search/${orderDetail?.storeAddress}`}
+              target="_blank"
+              className="flex items-center gap-2"
+            >
+              <span>尋找店家</span>
+              <IoLocationOutline className="text-red-500" />
+            </a>
           </section>
 
           {/* Order Information */}
@@ -32,23 +70,35 @@ const OrderDetail = () => {
             <div className="flex flex-col gap-5">
               <div className="flex justify-between">
                 <div>
-                  <p className="font-bold text-gray-400">Date</p>
-                  <p className="text-xl">2024/01/01</p>
+                  <p className="font-bold text-gray-400">訂單日期</p>
+                  <p className="text-xl">
+                    {orderDetail?.orderDate &&
+                      new Date(orderDetail.orderDate).toLocaleDateString()}
+                  </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-gray-400">Collection Time</p>
-                  <p className="text-xl">10:00 AM - 11:00 AM</p>
+                  <p className="font-bold text-gray-400">取餐時間</p>
+                  <p className="text-xl">
+                    {orderDetail?.pickupStartTime &&
+                      formatTime(orderDetail.pickupStartTime)}
+                    {" - "}
+                    {orderDetail?.pickupEndTime &&
+                      formatTime(orderDetail.pickupEndTime)}
+                  </p>
                 </div>
               </div>
 
               <div className="flex justify-between">
                 <div>
-                  <p className="font-bold text-gray-400">Surprise Bag</p>
-                  <p className="text-xl">烘焙商品</p>
+                  <p className="font-bold text-gray-400">
+                    {categoryName(orderDetail?.packageCategory)} x{" "}
+                    {orderDetail?.orderQuantity}
+                  </p>
+                  <p className="text-xl">{orderDetail?.packageName}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-gray-400">Total</p>
-                  <p className="text-xl">$10</p>
+                  <p className="font-bold text-gray-400">總價</p>
+                  <p className="text-xl">${orderDetail?.orderTotalPrice}</p>
                 </div>
               </div>
             </div>
@@ -56,11 +106,9 @@ const OrderDetail = () => {
             <div className="border-t border-gray-300 border-dashed my-4"></div>
 
             <div className="text-center mt-4">
-              <button
-                className="px-4 py-2 rounded-full w-full text-white bg-secondaryTheme "
-                text-white
-              >
-                點擊完成領取
+              <button className="px-4 py-2 rounded-full w-full text-white bg-secondaryTheme font-bold hover:bg-secondaryThemeHover transition-all duration-300">
+                {orderDetail?.orderStatus &&
+                  orderStatus(orderDetail?.orderStatus)}
               </button>
             </div>
           </section>
