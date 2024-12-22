@@ -37,7 +37,22 @@ const OrderDetail = () => {
 
   const handleCompleteOrder = () => {
     // check if time is up later
-    setStep(2);
+    if (!isTimeUp) {
+      toast.error("時間還沒到喔!");
+      return;
+    }
+
+    OrderService.completeOrder(orderId)
+      .then((res) => {
+        setStep(2);
+        toast.success(res.data.data);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+      });
   };
 
   useEffect(() => {

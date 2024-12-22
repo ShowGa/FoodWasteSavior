@@ -38,6 +38,19 @@ class OrderService {
       },
     });
   }
+
+  completeOrder(orderId) {
+    const token = JSON.parse(localStorage.getItem("auth-user-jwt"));
+    return axios.patch(
+      API_URL + `/completetheorder/${orderId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  }
 }
 
 export default new OrderService();
