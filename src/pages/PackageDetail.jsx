@@ -181,13 +181,15 @@ const PackageDetail = () => {
 
             <button
               className={`rounded-lg p-2 w-full text-white font-bold ${
-                timesUp
+                timesUp || packageDetail?.quantityRemaining <= 0
                   ? "bg-gray-400 pointer-events-none"
                   : "bg-secondaryTheme"
               }`}
               onClick={() => setShowModal(true)}
             >
-              {timesUp ? "今日預約已結束" : "預約"}
+              {timesUp || packageDetail?.quantityRemaining <= 0
+                ? "今日預約已結束"
+                : "預約"}
             </button>
           </div>
         </div>
