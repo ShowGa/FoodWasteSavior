@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 // icons
 import { IoLocationOutline } from "react-icons/io5";
-// image
-import { img2 } from "../assets";
-import { img } from "motion/react-client";
 // service
 import OrderService from "../service/OrderService";
 // toast
 import toast from "react-hot-toast";
 // utils
 import { formatTime, categoryName, orderStatus } from "../utils/convertor";
+// tools
+import { countdownTimer } from "../utils/tools";
 
 const OrderDetail = () => {
   const { orderId } = useParams();
+
+  const [countdown, setCountdown] = useState("00:00:00");
+  const [isTimeUp, setIsTimeUp] = useState(false);
 
   const [orderDetail, setOrderDetail] = useState(null);
 
@@ -32,7 +34,11 @@ const OrderDetail = () => {
 
   useEffect(() => {
     handleGetOrderDetail();
-  }, []);
+
+    if (orderDetail) {
+      countdownTimer(orderDetail?.pickupStartTime, setCountdown, setIsTimeUp);
+    }
+  }, [orderDetail]);
 
   return (
     <main>
@@ -106,9 +112,16 @@ const OrderDetail = () => {
             <div className="border-t border-gray-300 border-dashed my-4"></div>
 
             <div className="text-center mt-4">
-              <button className="px-4 py-2 rounded-full w-full text-white bg-secondaryTheme font-bold hover:bg-secondaryThemeHover transition-all duration-300">
-                {orderDetail?.orderStatus &&
-                  orderStatus(orderDetail?.orderStatus)}
+              <button
+                className={`px-4 py-2 rounded-full w-full font-bold  transition-all duration-300 text-white ${
+                  isTimeUp
+                    ? "bg-secondaryTheme hover:bg-secondaryThemeHover"
+                    : "bg-primary"
+                }`}
+              >
+                {orderDetail?.orderStatus === "WAITFORCONFIRM"
+                  ? orderStatus(orderDetail?.orderStatus)
+                  : `${countdown} 後可領取`}
               </button>
             </div>
           </section>
