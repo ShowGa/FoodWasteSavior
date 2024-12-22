@@ -17,7 +17,6 @@ export const countdownTimer = (endTime, ref, setIsTimeUp) => {
 
     const formatTime = (num) => (num < 10 ? `0${num}` : num);
 
-    // 如果倒计时结束
     if (distance < 0) {
       ref.current.textContent = "點擊領取";
       setIsTimeUp(true);
