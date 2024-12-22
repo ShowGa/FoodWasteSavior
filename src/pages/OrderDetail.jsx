@@ -10,14 +10,17 @@ import toast from "react-hot-toast";
 import { formatTime, categoryName, orderStatus } from "../utils/convertor";
 // tools
 import { countdownTimer } from "../utils/tools";
+// components
+import ReviewStep2 from "../components/ReviewStep2";
 
 const OrderDetail = () => {
   const { orderId } = useParams();
 
-  const [countdown, setCountdown] = useState("00:00:00");
-  const [isTimeUp, setIsTimeUp] = useState(false);
+  const ref = useRef();
 
+  const [isTimeUp, setIsTimeUp] = useState(false);
   const [orderDetail, setOrderDetail] = useState(null);
+  const [step, setStep] = useState(1);
 
   const handleGetOrderDetail = () => {
     OrderService.getOrderDetail(orderId)
@@ -32,11 +35,18 @@ const OrderDetail = () => {
       });
   };
 
+  const handleCompleteOrder = () => {
+    // check if time is up later
+    setStep(2);
+  };
+
   useEffect(() => {
     handleGetOrderDetail();
+  }, []);
 
+  useEffect(() => {
     if (orderDetail) {
-      countdownTimer(orderDetail?.pickupStartTime, setCountdown, setIsTimeUp);
+      countdownTimer(orderDetail?.pickupStartTime, ref, setIsTimeUp);
     }
   }, [orderDetail]);
 
@@ -66,65 +76,84 @@ const OrderDetail = () => {
               target="_blank"
               className="flex items-center gap-2"
             >
-              <span>尋找店家</span>
+              <span className="font-bold">尋找店家</span>
               <IoLocationOutline className="text-red-500" />
             </a>
           </section>
 
           {/* Order Information */}
-          <section className="mt-4 py-[1rem] px-[1.75rem] border border-gray-300 rounded-lg shadow-md">
-            <div className="flex flex-col gap-5">
-              <div className="flex justify-between">
-                <div>
-                  <p className="font-bold text-gray-400">訂單日期</p>
-                  <p className="text-xl">
-                    {orderDetail?.orderDate &&
-                      new Date(orderDetail.orderDate).toLocaleDateString()}
-                  </p>
+          {step === 1 && (
+            <section className="mt-4 py-[1rem] px-[1.75rem] border border-gray-300 rounded-lg shadow-md">
+              <div className="flex flex-col gap-5">
+                <div className="flex justify-between">
+                  <div>
+                    <p className="font-bold text-gray-400">訂單日期</p>
+                    <p className="text-xl">
+                      {orderDetail?.orderDate &&
+                        new Date(orderDetail.orderDate).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-gray-400">取餐時間</p>
+                    <p className="text-xl">
+                      {orderDetail?.pickupStartTime &&
+                        formatTime(orderDetail.pickupStartTime)}
+                      {" - "}
+                      {orderDetail?.pickupEndTime &&
+                        formatTime(orderDetail.pickupEndTime)}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="font-bold text-gray-400">取餐時間</p>
-                  <p className="text-xl">
-                    {orderDetail?.pickupStartTime &&
-                      formatTime(orderDetail.pickupStartTime)}
-                    {" - "}
-                    {orderDetail?.pickupEndTime &&
-                      formatTime(orderDetail.pickupEndTime)}
-                  </p>
+
+                <div className="flex justify-between">
+                  <div>
+                    <p className="font-bold text-gray-400">
+                      {categoryName(orderDetail?.packageCategory)} x{" "}
+                      {orderDetail?.orderQuantity}
+                    </p>
+                    <p className="text-xl">{orderDetail?.packageName}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-gray-400">總價</p>
+                    <p className="text-xl">${orderDetail?.orderTotalPrice}</p>
+                  </div>
                 </div>
+
+                {isTimeUp && (
+                  <div className="flex justify-between">
+                    <div>
+                      <p className="font-bold text-gray-400">
+                        訂單識別碼(請出示給店家驗證)
+                      </p>
+                      <p className="text-xl font-bold">
+                        {orderDetail?.orderConfirmCode}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <div className="flex justify-between">
-                <div>
-                  <p className="font-bold text-gray-400">
-                    {categoryName(orderDetail?.packageCategory)} x{" "}
-                    {orderDetail?.orderQuantity}
-                  </p>
-                  <p className="text-xl">{orderDetail?.packageName}</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-bold text-gray-400">總價</p>
-                  <p className="text-xl">${orderDetail?.orderTotalPrice}</p>
-                </div>
+              <div className="border-t border-gray-300 border-dashed my-4"></div>
+
+              <div className="text-center mt-4">
+                <button
+                  className={`px-4 py-2 rounded-full w-full font-bold  transition-all duration-300 text-white ${
+                    isTimeUp
+                      ? "bg-secondaryTheme hover:bg-secondaryThemeHover"
+                      : "bg-primary"
+                  }`}
+                  ref={ref}
+                  onClick={handleCompleteOrder}
+                >
+                  {orderDetail?.orderStatus === "WAITFORCONFIRM" &&
+                    orderStatus(orderDetail?.orderStatus)}
+                  00:00:00 後可領取
+                </button>
               </div>
-            </div>
+            </section>
+          )}
 
-            <div className="border-t border-gray-300 border-dashed my-4"></div>
-
-            <div className="text-center mt-4">
-              <button
-                className={`px-4 py-2 rounded-full w-full font-bold  transition-all duration-300 text-white ${
-                  isTimeUp
-                    ? "bg-secondaryTheme hover:bg-secondaryThemeHover"
-                    : "bg-primary"
-                }`}
-              >
-                {orderDetail?.orderStatus === "WAITFORCONFIRM"
-                  ? orderStatus(orderDetail?.orderStatus)
-                  : `${countdown} 後可領取`}
-              </button>
-            </div>
-          </section>
+          {step === 2 && <ReviewStep2 />}
         </div>
       </div>
     </main>
@@ -142,4 +171,7 @@ export default OrderDetail;
   <div className="basis-[37%] ml-[10%]">right</div>
 </section>
 
+
+
+2. useRef to change text content of the button inside the countdownTimer
 */

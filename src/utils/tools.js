@@ -1,4 +1,4 @@
-export const countdownTimer = (endTime, stateMethod, setIsTimeUp) => {
+export const countdownTimer = (endTime, ref, setIsTimeUp) => {
   const [hours, minutes, seconds] = endTime.split(":");
   const endDateTime = new Date();
   endDateTime.setHours(hours, minutes, seconds, 0);
@@ -19,16 +19,14 @@ export const countdownTimer = (endTime, stateMethod, setIsTimeUp) => {
 
     // 如果倒计时结束
     if (distance < 0) {
-      stateMethod("點擊領取");
+      ref.current.textContent = "點擊領取";
       setIsTimeUp(true);
       clearInterval(interval);
       return;
     } else {
-      stateMethod(
-        `${formatTime(remainingHours)}:${formatTime(
-          remainingMinutes
-        )}:${formatTime(remainingSeconds)}`
-      );
+      ref.current.textContent = `${formatTime(remainingHours)}:${formatTime(
+        remainingMinutes
+      )}:${formatTime(remainingSeconds)} 後可領取`;
     }
   }, 1000);
 };
