@@ -13,8 +13,6 @@ const Orders = () => {
 
   const [orderList, setOrderList] = useState([]);
 
-  console.log(orderList);
-
   const handleGetOrderList = () => {
     OrderService.getOrderList(authUser.userId)
       .then((res) => {

@@ -1,13 +1,46 @@
 import React, { useState } from "react";
+// react router dom
+import { useNavigate } from "react-router-dom";
 // mui
 import Rating from "@mui/material/Rating";
 // components
 import ToggleBtn from "./ToggleBtn";
+// service
+import ReviewService from "../service/ReviewService";
+// toast
+import toast from "react-hot-toast";
 
-const review = ["給的超大方", "食物美味", "服務態度好", "環境舒適", "價格超值"];
+const review = [
+  "給的超大方",
+  "食物美味",
+  "服務態度好",
+  "取餐速度快",
+  "價格超值",
+];
 
-const ReviewStep2 = () => {
+const ReviewStep2 = ({ storeId, orderId }) => {
   const [rating, setRating] = useState(5);
+  const navigate = useNavigate();
+
+  const handleCreateReview = () => {
+    const data = {
+      rating,
+    };
+
+    ReviewService.createReview(data, storeId)
+      .then((res) => {
+        toast.success("感謝您的評價，我們收到了!");
+        // 暫時跳轉到訂單頁面 => 等感謝頁面製作完成再修改
+        navigate(`/order-history/${orderId}`);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+        console.log(err);
+      });
+  };
 
   return (
     <section className="mt-4 py-[1rem] px-[1.75rem] border border-gray-300 rounded-lg shadow-md">
@@ -41,7 +74,10 @@ const ReviewStep2 = () => {
       <div className="border-t border-gray-300 border-dashed my-4"></div>
 
       <div className="text-center mt-4">
-        <button className="px-4 py-2 rounded-full w-full font-bold  transition-all duration-300 text-white bg-secondaryTheme hover:bg-secondaryThemeHover">
+        <button
+          className="px-4 py-2 rounded-full w-full font-bold  transition-all duration-300 text-white bg-secondaryTheme hover:bg-secondaryThemeHover"
+          onClick={handleCreateReview}
+        >
           評價
         </button>
       </div>

@@ -52,6 +52,7 @@ const OrderDetail = () => {
           err.response?.data.message ||
           "糟糕!伺服器似乎出現了問題，請聯絡客服。";
         toast.error(message);
+        console.log(err);
       });
   };
 
@@ -168,7 +169,12 @@ const OrderDetail = () => {
             </section>
           )}
 
-          {step === 2 && <ReviewStep2 />}
+          {step === 2 && (
+            <ReviewStep2
+              storeId={orderDetail?.storeId}
+              orderId={orderDetail?.orderId}
+            />
+          )}
         </div>
       </div>
     </main>

@@ -16,8 +16,6 @@ const DiscoverListCard = ({ packageData, setFavoriteList }) => {
 
   const [canSubmit, setCanSubmit] = useState(true);
 
-  console.log(packageData);
-
   const handleUpdateFavoriteList = (isFavorite) => {
     setFavoriteList((prev) => {
       return prev.map((item) =>

@@ -46,7 +46,10 @@ function App() {
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders-history" element={<OrdersHistory />} />
             <Route path="/order/:orderId" element={<OrderDetail />} />
-            <Route path="/order-history/:id" element={<OrderHistoryDetail />} />
+            <Route
+              path="/order-history/:orderId"
+              element={<OrderHistoryDetail />}
+            />
             <Route path="/store/:storeId" element={<StoreDetail />} />
             <Route path="/package/:packageId" element={<PackageDetail />} />
           </Route>
