@@ -1,16 +1,18 @@
 import React from "react";
+// router
+import { Link } from "react-router-dom";
 // image
 import { img1 } from "../assets";
 // icons
 import { FaCircleCheck } from "react-icons/fa6";
 
-const OrderHistoryListCard = () => {
+const OrderHistoryListCard = ({ order }) => {
   return (
-    <div className="c-order-list-card">
+    <Link to={`/order-history/${order.orderId}`} className="c-order-list-card">
       <div className="flex justify-start items-center gap-4">
         <div className="rounded-full border-2 border-gray-300 w-[3rem] h-[3rem] relative">
           <img
-            src={img1}
+            src={order.storeLogoImageUrl}
             alt=""
             className="rounded-full w-full h-full object-cover"
           />
@@ -21,11 +23,11 @@ const OrderHistoryListCard = () => {
         </div>
 
         <div>
-          <h3 className="text-xl">Super Holly Bag</h3>
-          <p className="text-xs font-light text-yellow-500">pick up time</p>
+          <h3 className="text-xl">{order.storeName}</h3>
+          <p className="text-xs text-yellow-500">{order.orderDate}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
