@@ -67,7 +67,7 @@ const GoogleOAuth = () => {
   return (
     <button className="c-OAuth_btn" onClick={handleGoogleSignIn}>
       <FcGoogle className="text-xl" />
-      <span>Continue with Google</span>
+      <span>使用 Google 登入</span>
     </button>
   );
 };

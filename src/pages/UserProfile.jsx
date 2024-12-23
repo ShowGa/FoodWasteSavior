@@ -31,13 +31,26 @@ const contributionState = [
 
 const CheckerTag = ({ isvalid, label }) => {
   return (
-    <div
-      className={`flex justify-center items-center gap-2 border border-gray-300 rounded-full px-2 py-1 ${
-        isvalid ? "bg-green-500" : "bg-red-500"
-      } transition-all duration-500`}
-    >
-      <p className="text-sm text-gray-100 font-bold">{label}</p>
-    </div>
+    <>
+      {/* <div
+        className={`flex justify-center items-center gap-2 border border-gray-300 rounded-full px-2 py-1 ${
+          isvalid ? "bg-green-500" : "bg-red-500"
+        } transition-all duration-500`}
+      >
+        <p className="text-sm text-gray-100 font-bold">{label}</p>
+      </div> */}
+
+      <div className="flex items-center gap-2">
+        {/* dot */}
+        <div
+          className={`w-2 h-2 rounded-full ${
+            isvalid ? "bg-green-500" : "bg-red-500"
+          }`}
+        ></div>
+        {/* label */}
+        <p className="text-sm text-black font-bold">{label}</p>
+      </div>
+    </>
   );
 };
 

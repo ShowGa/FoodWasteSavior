@@ -41,24 +41,22 @@ const UserLogin = () => {
         {/* Form Container */}
         <section className="flex justify-center items-center flex-1 h-full">
           <div className="form_container w-full max-w-[20rem]">
-            <h2 className="text-3xl font-extrabold">User Login</h2>
-            <span className="text-sm text-gray-400">
-              Please enter your details
-            </span>
+            <h2 className="text-3xl font-extrabold">使用者登入</h2>
+            <span className="text-sm text-gray-400">使用外部驗證登入</span>
 
             {/* OAuth */}
             <div className="flex flex-col gap-4 my-4">
               <GoogleOAuth />
               <button className="c-OAuth_btn">
                 <IoLogoApple className="text-2xl" />
-                <span>Continue with Apple</span>
+                <span>使用 Apple 登入</span>
               </button>
             </div>
 
             {/* Divider */}
             <div className="p-divider">
               <div className="p-divider_line"></div>
-              <span>Or</span>
+              <span>或</span>
               <div className="p-divider_line"></div>
             </div>
 
@@ -70,22 +68,22 @@ const UserLogin = () => {
 
               {/* material UI */}
               <Button variant="contained" color="success">
-                Log In
+                登入
               </Button>
             </form>
 
             {/* Forgot Password & Create an Account */}
             <div className="flex flex-col gap-1 mt-4 text-sm">
-              <div>
-                <span>Forgot Password? </span>
+              {/* <div>
+                <span>忘記密碼? </span>
                 <a className="text-blue-500 hover:underline" href="#">
-                  Reset Password
+                  重設密碼
                 </a>
-              </div>
+              </div> */}
               <div>
-                <span>Don't have an account? </span>
+                <span>沒有帳號? </span>
                 <a className="text-blue-500 hover:underline" href="#">
-                  Create an Account
+                  註冊
                 </a>
               </div>
             </div>
