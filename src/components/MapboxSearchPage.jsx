@@ -7,6 +7,41 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 // toast
 import toast from "react-hot-toast";
 
+const StoreMapMarker = ({ storeData }) => {
+  console.log(storeData);
+
+  return (
+    <div
+      style={{
+        width: "2.5rem",
+        height: "2.5rem",
+        borderRadius: "50%",
+        border: "2px solid orange",
+        position: "relative",
+      }}
+      className="map-marker hover:scale-110 transition-all duration-300"
+    >
+      <img
+        src={storeData.storeCoverImage}
+        alt=""
+        className="w-full h-full object-cover rounded-full"
+      />
+
+      {/* store map card */}
+      {/* <div className="flex items-center justify-start absolute bottom-[-7rem] w-[20rem] h-[5rem] p-3 rounded-xl border-2 border-gray-300 bg-white">
+        <div className=" w-[3rem] h-[3rem]">
+          <img
+            src={storeData.storeCoverImage}
+            alt=""
+            className="w-full h-full object-cover rounded-full"
+          />
+        </div>
+        <h2>{storeData.storeName}</h2>
+      </div> */}
+    </div>
+  );
+};
+
 const MapboxSearchPage = ({
   searchStoreData,
   setSearchStoreData,
@@ -23,6 +58,8 @@ const MapboxSearchPage = ({
   const [isPositionChanged, setIsPositionChanged] = useState(false);
 
   const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+
+  console.log(searchStoreData);
 
   // drag logic => change map viewstate by userPositionForSearch state
   const handleDragLogic = (evt) => {
@@ -66,15 +103,7 @@ const MapboxSearchPage = ({
               latitude={storeData.latitude}
               anchor="center"
             >
-              <div
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  backgroundColor: "red",
-                  borderRadius: "50%",
-                  border: "2px solid white",
-                }}
-              ></div>
+              <StoreMapMarker storeData={storeData} />
             </Marker>
           ))}
       </Map>
@@ -91,7 +120,7 @@ const MapboxSearchPage = ({
           // animation: "pulse 2s infinite",
         }}
       >
-        <FaMapMarkerAlt />
+        <FaMapMarkerAlt className="text-red-500 text-4xl" />
       </div>
 
       {/* search button */}
