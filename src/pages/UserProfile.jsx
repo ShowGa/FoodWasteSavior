@@ -54,6 +54,10 @@ const UserProfile = () => {
     noSymbol: true,
   });
 
+  // image upload
+  const [imgFile, setImgFile] = useState(null);
+  const [imgUrl, setImgUrl] = useState(null);
+
   const handleGetUserContribution = () => {
     OrderService.getUserContribution(authUser.userId)
       .then((res) => {
