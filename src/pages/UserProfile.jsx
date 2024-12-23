@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 // components
 import ContributionCard from "../components/ContributionCard";
 import ProfileFuntionCard from "../components/ProfileFuntionCard";
@@ -11,6 +11,7 @@ import { FaTree, FaMoneyBill } from "react-icons/fa";
 // service
 import OrderService from "../service/OrderService";
 import UserService from "../service/UserService";
+import UploadImgService from "../service/UploadImgService";
 // toast
 import toast from "react-hot-toast";
 
@@ -55,6 +56,9 @@ const CheckerTag = ({ isvalid, label }) => {
 };
 
 const UserProfile = () => {
+  // image input ref
+  const imgInputRef = useRef(null);
+
   // zustand
   const { authUser, loginSetAuthUser } = useAuthUserStore();
 
@@ -68,8 +72,35 @@ const UserProfile = () => {
   });
 
   // image upload
+  const [isLoading, setIsLoading] = useState(false);
   const [imgFile, setImgFile] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
+  const [imgPreview, setImgPreview] = useState(null);
+
+  // image input change => set img file
+  const handleImgInputChange = (e) => {
+    setImgFile(e.target.files[0]);
+  };
+
+  // updaload image to cloudinary
+  const handleUploadImg = () => {
+    const fileName = new Date().getTime() + imgFile.name;
+
+    UploadImgService.uploadImg(imgFile, fileName)
+      .then((res) => {
+        const imgUrl = res.data.secure_url;
+        setImgPreview(imgUrl);
+        // this is for update user profile
+        setUserProfileForm((prev) => ({ ...prev, avatarUrl: imgUrl }));
+        toast.success("變更完成，請記得按下儲存變更!");
+      })
+      .catch((err) => {
+        toast.error("上傳失敗，請稍後再試!");
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        console.log(err);
+      });
+  };
 
   const handleGetUserContribution = () => {
     OrderService.getUserContribution(authUser.userId)
@@ -138,6 +169,12 @@ const UserProfile = () => {
     handleGetUserContribution();
   }, []);
 
+  useEffect(() => {
+    if (imgFile) {
+      handleUploadImg();
+    }
+  }, [imgFile]);
+
   return (
     <main className="px-[4rem] py-[1.5rem]">
       <div className="flex flex-col gap-8 p-[1.5rem] min-h-screen">
@@ -173,14 +210,26 @@ const UserProfile = () => {
             <div className="flex justify-center">
               <div className="w-32 h-32 rounded-full bg-gray-200 overflow-hidden">
                 <img
-                  src={userProfileForm.avatarUrl}
+                  src={imgPreview || userProfileForm.avatarUrl}
                   alt="使用者頭像"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => imgInputRef.current.click()}
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-6">
+              {/* upload img */}
+              <div className="flex flex-col gap-2">
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={imgInputRef}
+                  hidden
+                  onChange={handleImgInputChange}
+                />
+              </div>
+
               <div className="flex flex-col gap-2">
                 <h2 className="text-xl">姓名</h2>
                 <input
