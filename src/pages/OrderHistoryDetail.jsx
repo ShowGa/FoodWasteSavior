@@ -45,15 +45,15 @@ const OrderHistoryDetail = () => {
             <div className="flex gap-4 mb-7">
               <div className="rounded-full border-2 border-gray-300 w-[3rem] h-[3rem]">
                 <img
-                  src={orderDetail.storeLogo}
+                  src={orderDetail?.storeLogo}
                   alt=""
                   className="rounded-full w-full h-full object-cover"
                 />
               </div>
 
               <div>
-                <h3 className="text-xl">{orderDetail.storeName}</h3>
-                <p className="text-sm">{orderDetail.storeAddress}</p>
+                <h3 className="text-xl">{orderDetail?.storeName}</h3>
+                <p className="text-sm">{orderDetail?.storeAddress}</p>
               </div>
             </div>
 
@@ -62,12 +62,12 @@ const OrderHistoryDetail = () => {
               <div className="flex justify-between">
                 <div>
                   <p className="font-bold text-gray-400">領取時間</p>
-                  <p className="text-xl">{orderDetail.orderDate}</p>
+                  <p className="text-xl">{orderDetail?.orderDate}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-gray-400">商品種類</p>
+                  <p className="font-bold text-gray-400"></p>
                   <p className="text-xl">
-                    {categoryName(orderDetail.packageCategory)}
+                    {categoryName(orderDetail?.packageCategory)}
                   </p>
                 </div>
               </div>
@@ -75,18 +75,18 @@ const OrderHistoryDetail = () => {
               <div className="flex justify-between">
                 <div>
                   <p className="font-bold text-gray-400">商品名稱</p>
-                  <p className="text-xl">{orderDetail.packageName}</p>
+                  <p className="text-xl">{orderDetail?.packageName}</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold text-gray-400">總價</p>
-                  <p className="text-xl">NT$ {orderDetail.orderTotalPrice}</p>
+                  <p className="text-xl">NT$ {orderDetail?.orderTotalPrice}</p>
                 </div>
               </div>
 
               <div className="flex justify-between">
                 <div>
                   <p className="font-bold text-gray-400">訂單確認碼</p>
-                  <p className="text-xl">{orderDetail.orderConfirmCode}</p>
+                  <p className="text-xl">{orderDetail?.orderConfirmCode}</p>
                 </div>
               </div>
             </div>

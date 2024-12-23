@@ -40,8 +40,6 @@ const Orders = () => {
         </div>
 
         <div>
-          <h2>2024-12-12</h2>
-
           {/* card */}
           <div className="flex flex-wrap gap-4 mt-8">
             {orderList.map((order) => (
