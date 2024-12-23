@@ -16,7 +16,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
 
 const buttonIconsInfo = [
-  { icon: <RiCompassDiscoverLine />, link: "/discover" },
+  // { icon: <RiCompassDiscoverLine />, link: "/discover" },
   { icon: <RiSearchLine />, link: "/search" },
   { icon: <FaShoppingCart />, link: "/orders" },
   { icon: <FaHeart />, link: "/favorite" },
