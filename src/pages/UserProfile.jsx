@@ -110,7 +110,6 @@ const UserProfile = () => {
       .then((res) => {
         const contribution = res.data.data;
         setUserContribution(contribution);
-        console.log(contribution);
       })
       .catch((err) => {
         console.log(err);
