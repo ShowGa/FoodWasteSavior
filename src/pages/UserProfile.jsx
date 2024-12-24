@@ -7,28 +7,15 @@ import useAuthUserStore from "../zustand/useAuthUser";
 // assets
 import { img1 } from "../assets";
 // react icons
-import { FaTree, FaMoneyBill } from "react-icons/fa";
+import { FaMoneyBill } from "react-icons/fa";
+import { IoBag } from "react-icons/io5";
+
 // service
 import OrderService from "../service/OrderService";
 import UserService from "../service/UserService";
 import UploadImgService from "../service/UploadImgService";
 // toast
 import toast from "react-hot-toast";
-
-const contributionState = [
-  {
-    title: "二氧化碳減少",
-    icon: <FaTree className="text-6xl" />,
-    number: 1000,
-    unit: "顆樹被種植",
-  },
-  {
-    title: "省下的錢",
-    icon: <FaMoneyBill className="text-6xl" />,
-    number: 1000,
-    unit: "元",
-  },
-];
 
 const CheckerTag = ({ isvalid, label }) => {
   return (
@@ -75,6 +62,22 @@ const UserProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [imgFile, setImgFile] = useState(null);
   const [imgPreview, setImgPreview] = useState(null);
+
+  // contribution
+  const contributionState = [
+    {
+      title: "拯救了",
+      icon: <IoBag className="text-6xl text-orange-700" />,
+      number: userContribution?.orderAmounts,
+      unit: "袋原本要被丟掉的美食",
+    },
+    {
+      title: "省下的錢",
+      icon: <FaMoneyBill className="text-6xl text-green-700" />,
+      number: userContribution?.savedMoney,
+      unit: "元",
+    },
+  ];
 
   // image input change => set img file
   const handleImgInputChange = (e) => {
