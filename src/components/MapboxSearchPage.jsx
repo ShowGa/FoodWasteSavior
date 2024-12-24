@@ -6,10 +6,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 // toast
 import toast from "react-hot-toast";
+// mui
+import { Slider } from "@mui/material";
 
 const StoreMapMarker = ({ storeData }) => {
-  console.log(storeData);
-
   return (
     <div
       style={{
@@ -42,6 +42,35 @@ const StoreMapMarker = ({ storeData }) => {
   );
 };
 
+// slider sx style
+const sliderSx = {
+  "& .MuiSlider-thumb": {
+    color: "orange",
+    width: "1rem",
+    height: "1rem",
+    "&:hover": {
+      boxShadow: "0 0 0px 5px rgba(230, 153, 0, 0.522)",
+    },
+  },
+  "& .MuiSlider-track": {
+    color: "orange",
+  },
+  "& .MuiSlider-rail": {
+    color: "orange",
+  },
+  "& .MuiSlider-active": {
+    color: "orange",
+  },
+  // 修改刻度顏色
+  "& .MuiSlider-mark": {
+    display: "none",
+  },
+  // 修改刻度標籤顏色
+  "& .MuiSlider-markLabel": {
+    color: "#FF5722", // 刻度標籤顏色 (深橘色)
+  },
+};
+
 const MapboxSearchPage = ({
   searchStoreData,
   setSearchStoreData,
@@ -59,14 +88,21 @@ const MapboxSearchPage = ({
 
   const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-  console.log(searchStoreData);
-
   // drag logic => change map viewstate by userPositionForSearch state
   const handleDragLogic = (evt) => {
     const { longitude, latitude } = evt.viewState;
     setUserPositionForSearch({ ...userPositionForSearch, longitude, latitude });
     setOnMoving(true);
     setIsPositionChanged(true);
+  };
+
+  // adjust the radius
+  const handleRadiusChange = (evt) => {
+    const radius = evt.target.value;
+    setUserPositionForSearch({
+      ...userPositionForSearch,
+      radius: radius * 1000,
+    });
   };
 
   // search button click logic
@@ -140,6 +176,30 @@ const MapboxSearchPage = ({
         >
           {isPositionChanged ? "Search" : ""}
         </button>
+      </div>
+
+      {/* radius slider */}
+
+      <div className="absolute top-8 left-3 max-h-[10rem] h-full bg py-6 px-1 rounded-full bg-[#414141]">
+        <Slider
+          aria-label="Temperature"
+          defaultValue={30}
+          // getAriaValueText={valuetext}
+          valueLabelDisplay="auto"
+          valueLabelFormat={(value) => `方圓 : ${value} km內`}
+          shiftStep={5}
+          step={1}
+          marks
+          min={1}
+          max={5}
+          orientation="vertical"
+          sx={sliderSx}
+          value={userPositionForSearch.radius / 1000}
+          onChange={(evt) => {
+            handleRadiusChange(evt);
+            setIsPositionChanged(true);
+          }}
+        />
       </div>
     </>
   );
