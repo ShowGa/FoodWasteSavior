@@ -39,7 +39,7 @@ const Favorite = () => {
         </div>
 
         {/* card */}
-        <div className="flex flex-wrap justify-start items-center gap-4 mt-8">
+        <div className="flex flex-wrap justify-start items-center gap-4 mt-8 max-md:flex-col max-md:gap-4">
           {favoriteList.map((item) => (
             <DiscoverListCard
               key={item.packageId}

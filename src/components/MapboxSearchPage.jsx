@@ -180,7 +180,7 @@ const MapboxSearchPage = ({
 
       {/* radius slider */}
 
-      <div className="absolute top-8 left-3 max-h-[10rem] h-full bg py-6 px-1 rounded-full bg-[#414141]">
+      <div className="absolute top-8 right-3 max-h-[10rem] h-full bg py-6 px-1 rounded-full bg-[#414141]">
         <Slider
           aria-label="Temperature"
           defaultValue={30}

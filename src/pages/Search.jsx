@@ -156,17 +156,24 @@ const Search = () => {
         {/* mobile */}
 
         <section
-          className={`fixed w-full h-[40rem] bg-white z-20 py-[4rem] px-[2rem] rounded-xl md:hidden ${
+          className={`flex flex-col items-center fixed w-full h-[40rem] bg-white z-20 py-[4rem] px-[2rem] rounded-3xl md:hidden ${
             showDragBar ? "bottom-0" : "bottom-[-30rem]"
           } transition-all duration-300 ease-in-out`}
         >
+          <div
+            className="p-filter-options w-fit bg-white rounded-full"
+            onClick={() => setShowFilterModal(true)}
+          >
+            <AiOutlineControl className="text-3xl" />
+          </div>
+
           {/* drag bar */}
           <div
             className="absolute top-5 left-1/2 -translate-x-1/2 w-[7rem] h-[0.5rem] bg-gray-300 rounded-xl cursor-grab"
             onClick={() => setShowDragBar(!showDragBar)}
           ></div>
 
-          <div className="flex flex-col flex-wrap gap-4 w-full bg-white overflow-y-auto">
+          <div className="flex flex-col flex-wrap gap-4 w-full bg-white overflow-y-auto mt-8">
             {searchStoreData.map((storeData, index) => (
               <StoreCard storeInfo={storeData} key={storeData.storeId} />
             ))}
