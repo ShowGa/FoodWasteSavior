@@ -45,7 +45,6 @@ const MapFilterModal = ({ setShowFilterModal }) => {
         loginSetUserPosition(res.data.data);
         setShowFilterModal(false);
         toast.success("成功儲存新位置資訊!");
-
         // timeout 1 second to reload page
         setTimeout(() => {
           window.location.reload();
@@ -89,7 +88,8 @@ const MapFilterModal = ({ setShowFilterModal }) => {
 
     MapService.getCompleteLocation(address)
       .then((res) => {
-        const [longitude, latitude] = res.data.features[0].center;
+        const longitude = res.data.features[0].center[0];
+        const latitude = res.data.features[0].center[1];
 
         handleFlyTo(longitude, latitude);
         setPositionData({
@@ -130,7 +130,12 @@ const MapFilterModal = ({ setShowFilterModal }) => {
             style={{ width: "100%", height: "100%" }}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             mapboxAccessToken={MAPBOX_TOKEN}
-            onMove={(evt) => setPositionData(evt.viewState)}
+            onMove={(evt) =>
+              setPositionData({
+                longitude: evt.viewState.longitude,
+                latitude: evt.viewState.latitude,
+              })
+            }
           ></Map>
 
           {/* user middle position */}
