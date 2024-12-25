@@ -66,7 +66,10 @@ const Search = () => {
   );
 
   // filter modal
-  const [showFilterModal, setShowFilterModal] = useState(true);
+  const [showFilterModal, setShowFilterModal] = useState(false);
+
+  // drag bar state
+  const [showDragBar, setShowDragBar] = useState(false);
 
   // ===================== //
   //   helper functions
@@ -116,7 +119,7 @@ const Search = () => {
     <main>
       <div className="flex flex-row">
         {/* left side */}
-        <section className="basis-[63%] p-[1.5rem] ">
+        <section className="basis-[63%] p-[1.5rem] max-md:hidden">
           {/* <div className="bg-green-300 w-full">
             <div>hi</div>
             <div></div>
@@ -150,8 +153,28 @@ const Search = () => {
           </div>
         </section>
 
+        {/* mobile */}
+
+        <section
+          className={`fixed w-full h-[40rem] bg-white z-20 py-[4rem] px-[2rem] rounded-xl md:hidden ${
+            showDragBar ? "bottom-0" : "bottom-[-30rem]"
+          } transition-all duration-300 ease-in-out`}
+        >
+          {/* drag bar */}
+          <div
+            className="absolute top-5 left-1/2 -translate-x-1/2 w-[7rem] h-[0.5rem] bg-gray-300 rounded-xl cursor-grab"
+            onClick={() => setShowDragBar(!showDragBar)}
+          ></div>
+
+          <div className="flex flex-col flex-wrap gap-4 w-full bg-white overflow-y-auto">
+            {searchStoreData.map((storeData, index) => (
+              <StoreCard storeInfo={storeData} key={storeData.storeId} />
+            ))}
+          </div>
+        </section>
+
         {/* right side */}
-        <section className="basis-[37%] bg-red-300">
+        <section className="basis-[37%] max-md:basis-full">
           <div
             className="sticky w-full"
             style={{

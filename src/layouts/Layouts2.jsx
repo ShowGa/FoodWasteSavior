@@ -42,9 +42,9 @@ const Layouts2 = () => {
 
   return (
     <>
-      <Header2 />
+      <Header2 isMobile={isMobile} />
       <Outlet />
-      {!isMobile && <MobileFooterNav />}
+      {isMobile && <MobileFooterNav className="z-30" />}
     </>
   );
 };

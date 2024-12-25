@@ -23,7 +23,7 @@ const buttonIconsInfo = [
   { icon: <FaUserCircle />, link: "/profile" },
 ];
 
-const Header2 = () => {
+const Header2 = ({ isMobile }) => {
   // zustand
   const { setHeader2Height } = useHeaderHeightStore();
 
@@ -61,13 +61,15 @@ const Header2 = () => {
           <HiShoppingBag />
         </div>
 
-        <div className="flex flex-row items-center gap-4">
-          {buttonIconsInfo.map((iconInfo, index) => (
-            <Link className="c-header2-nav_item" to={iconInfo.link}>
-              {iconInfo.icon}
-            </Link>
-          ))}
-        </div>
+        {!isMobile && (
+          <div className="flex flex-row items-center gap-4">
+            {buttonIconsInfo.map((iconInfo, index) => (
+              <Link className="c-header2-nav_item" to={iconInfo.link}>
+                {iconInfo.icon}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* bottom */}
