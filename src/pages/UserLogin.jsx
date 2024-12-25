@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 // react router dom
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Assets
-import { img3 } from "../assets";
+import { shoppingModify, Logobg } from "../assets";
 
 import { IoLogoApple } from "react-icons/io5";
 // material UI
@@ -26,15 +26,14 @@ const UserLogin = () => {
     <div>
       {/* logo */}
       <div className="absolute top-5 right-10 z-50">
-        {/* <img src={logo} alt="logo" /> */}
-        <h1 className="text-3xl font-extrabold">Logo</h1>
+        <img src={Logobg} alt="logo" className="w-16 h-16" />
       </div>
 
       <div className="flex h-screen">
         {/* Image Container */}
         <section className="flex-1 max-md:hidden">
           <div className="img_container">
-            <img src={img3} alt="handsome man" />
+            <img src={shoppingModify} alt="shoppingModify" />
           </div>
         </section>
 
@@ -82,9 +81,12 @@ const UserLogin = () => {
               </div> */}
               <div>
                 <span>沒有帳號? </span>
-                <a className="text-blue-500 hover:underline" href="#">
+                <Link
+                  className="text-blue-500 hover:underline"
+                  to="/user-signup"
+                >
                   註冊
-                </a>
+                </Link>
               </div>
             </div>
           </div>

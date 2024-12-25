@@ -11,6 +11,8 @@ import { FaHeart } from "react-icons/fa6";
 import { AiOutlineControl } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import { RiSearchLine } from "react-icons/ri";
+// assets
+import { Logobg } from "../assets";
 
 // zustand
 import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
@@ -58,7 +60,7 @@ const Header2 = ({ isMobile }) => {
       {/* top */}
       <div className="flex flex-row items-center justify-between px-10 max-lg:px-8 border-b">
         <div className="text-4xl py-4">
-          <HiShoppingBag />
+          <img src={Logobg} alt="logo" className="w-16 h-16" />
         </div>
 
         {!isMobile && (
