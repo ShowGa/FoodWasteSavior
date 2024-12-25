@@ -12,6 +12,7 @@ import useAuthUserPositionStore from "../zustand/useAuthUserPosition";
 import toast from "react-hot-toast";
 // service
 import MapService from "../service/MapBoxService";
+import AddressService from "../service/AddressService";
 
 const MapFilterModal = ({ setShowFilterModal }) => {
   const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -19,7 +20,7 @@ const MapFilterModal = ({ setShowFilterModal }) => {
   // useRef for map
   const mapRef = useRef(null);
 
-  const { userPosition } = useAuthUserPositionStore();
+  const { userPosition, loginSetUserPosition } = useAuthUserPositionStore();
 
   // optimize for address search
   const [canSearch, setCanSearch] = useState(false);
@@ -33,7 +34,31 @@ const MapFilterModal = ({ setShowFilterModal }) => {
     }
   );
 
-  console.log(positionData);
+  const handleAddressSubmit = () => {
+    if (userPosition === positionData) {
+      toast.error("請先更改位置資訊!");
+      return;
+    }
+
+    AddressService.getAddressByPosition(positionData)
+      .then((res) => {
+        loginSetUserPosition(res.data.data);
+        setShowFilterModal(false);
+        toast.success("成功儲存新位置資訊!");
+
+        // timeout 1 second to reload page
+        setTimeout(() => {
+          window.location.reload();
+        }, 800);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.data.message ||
+          "糟糕!伺服器似乎出現了問題，請聯絡客服。";
+        toast.error(message);
+        console.log(err);
+      });
+  };
 
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
@@ -73,13 +98,13 @@ const MapFilterModal = ({ setShowFilterModal }) => {
         });
         setCanSearch(false);
         toast.success("成功找到位置資訊，請記得按下確定鍵完成更改!");
-        console.log(longitude, latitude);
       })
       .catch((err) => {
         const message =
           err.response?.data.message ||
           "糟糕!伺服器似乎出現了問題，請聯絡客服。";
         toast.error(message);
+        console.log(err);
       });
   };
 
@@ -148,8 +173,11 @@ const MapFilterModal = ({ setShowFilterModal }) => {
         </div>
 
         <div>
-          <button className="bg-primary w-full text-white px-4 py-2 rounded-full">
-            確定
+          <button
+            className="bg-primary w-full text-white px-4 py-2 rounded-full"
+            onClick={handleAddressSubmit}
+          >
+            儲存資訊
           </button>
         </div>
       </div>
