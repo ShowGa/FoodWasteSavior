@@ -9,6 +9,7 @@ import StoreService from "../service/StoreService";
 // components
 import StoreCard from "../components/StoreCard";
 import MapboxSearchPage from "../components/MapboxSearchPage";
+import MapFilterModal from "../components/MapFilterModal";
 // images
 import { img1, img2, img3 } from "../assets";
 // icons
@@ -63,6 +64,9 @@ const Search = () => {
       radius: 1000,
     }
   );
+
+  // filter modal
+  const [showFilterModal, setShowFilterModal] = useState(true);
 
   // ===================== //
   //   helper functions
@@ -120,7 +124,7 @@ const Search = () => {
 
           {/* search bar */}
           <div className="flex justify-center items-center space-x-4 mb-4">
-            <div className="p-search-bar">
+            {/* <div className="p-search-bar">
               <input
                 type="text"
                 placeholder="Search..."
@@ -129,9 +133,12 @@ const Search = () => {
               <button className="h-full">
                 <AiOutlineSearch className="text-3xl cursor-pointer" />
               </button>
-            </div>
+            </div> */}
 
-            <div className="p-filter-options">
+            <div
+              className="p-filter-options"
+              onClick={() => setShowFilterModal(true)}
+            >
               <AiOutlineControl className="text-3xl" />
             </div>
           </div>
@@ -162,6 +169,10 @@ const Search = () => {
           </div>
         </section>
       </div>
+
+      {showFilterModal && (
+        <MapFilterModal setShowFilterModal={setShowFilterModal} />
+      )}
     </main>
   );
 };
