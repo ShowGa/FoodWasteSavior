@@ -173,7 +173,7 @@ const Search = () => {
             onClick={() => setShowDragBar(!showDragBar)}
           ></div>
 
-          <div className="p-mobile-store-card-container">
+          <div className="p-mobile-store-card-container mt-8">
             {searchStoreData.map((storeData, index) => (
               <StoreCard storeInfo={storeData} key={storeData.storeId} />
             ))}
