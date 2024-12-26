@@ -44,6 +44,7 @@ const Layouts2 = () => {
     <>
       <Header2 isMobile={isMobile} />
       <Outlet />
+      <div className="hidden max-md:block h-[5rem]"></div>
       {isMobile && <MobileFooterNav className="z-30" />}
     </>
   );

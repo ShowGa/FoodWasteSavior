@@ -119,7 +119,7 @@ const MapFilterModal = ({ setShowFilterModal }) => {
           <p className="text-lg font-bold">選擇預設地理位置</p>
         </div>
 
-        <div className="h-[20rem] rounded-lg overflow-hidden relative">
+        <div className="h-[20rem] max-md:h-[13rem] rounded-lg overflow-hidden relative">
           <Map
             ref={mapRef}
             initialViewState={{

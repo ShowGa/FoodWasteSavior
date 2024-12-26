@@ -59,9 +59,9 @@ const Header2 = ({ isMobile }) => {
     <header className="c-header2 bg-white" ref={headerRef}>
       {/* top */}
       <div className="flex flex-row items-center justify-between px-10 max-lg:px-8 border-b">
-        <div className="text-4xl py-4">
+        <Link to="/search" className="text-4xl py-4">
           <img src={Logobg} alt="logo" className="w-16 h-16" />
-        </div>
+        </Link>
 
         {!isMobile && (
           <div className="flex flex-row items-center gap-4">
