@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 // react router dom
 import { Outlet, Navigate } from "react-router-dom";
+// zustand
+import useAuthUserStore from "../zustand/useAuthUser";
 
 const PrivateRoute = () => {
   // zustand later
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { authUser } = useAuthUserStore();
 
-  return isLoggedIn ? <Outlet /> : <Navigate to="/user-login" />;
+  return authUser ? <Outlet /> : <Navigate to="/user-login" />;
 };
 
 export default PrivateRoute;
