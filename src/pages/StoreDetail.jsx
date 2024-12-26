@@ -132,13 +132,6 @@ const StoreDetail = () => {
                 <p className="text-sm font-light">次顧客評論</p>
               </div>
             </div>
-
-            <div className="mt-6">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
-              vero iste aliquid eum, distinctio dolor doloremque sunt
-              consequuntur odit quibusdam ratione, ipsa, fugit amet commodi
-              quaerat! Ea, commodi. Nihil, veritatis.
-            </div>
           </div>
         </div>
 
