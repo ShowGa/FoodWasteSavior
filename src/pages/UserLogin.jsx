@@ -43,6 +43,12 @@ const UserLogin = () => {
             <h2 className="text-3xl font-extrabold">使用者登入</h2>
             <span className="text-sm text-gray-400">使用外部驗證登入</span>
 
+            <div className="p-divider">
+              <div className="p-divider_line"></div>
+              <span>OAuth</span>
+              <div className="p-divider_line"></div>
+            </div>
+
             {/* OAuth */}
             <div className="flex flex-col gap-4 my-4">
               <GoogleOAuth />
@@ -52,25 +58,6 @@ const UserLogin = () => {
               </button>
             </div>
 
-            {/* Divider */}
-            <div className="p-divider">
-              <div className="p-divider_line"></div>
-              <span>或</span>
-              <div className="p-divider_line"></div>
-            </div>
-
-            {/* Form */}
-            <form className="flex flex-col gap-4 mt-4">
-              {/* material UI */}
-              <TextField id="email" label="Email" variant="outlined" />
-              <TextField id="password" label="Password" variant="outlined" />
-
-              {/* material UI */}
-              <Button variant="contained" color="success">
-                登入
-              </Button>
-            </form>
-
             {/* Forgot Password & Create an Account */}
             <div className="flex flex-col gap-1 mt-4 text-sm">
               {/* <div>
@@ -79,7 +66,7 @@ const UserLogin = () => {
                   重設密碼
                 </a>
               </div> */}
-              <div>
+              {/* <div>
                 <span>沒有帳號? </span>
                 <Link
                   className="text-blue-500 hover:underline"
@@ -87,7 +74,7 @@ const UserLogin = () => {
                 >
                   註冊
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -110,3 +97,22 @@ export default UserLogin;
                 <input type="password" id="password" />
               </div>
 */
+
+/*
+ =========== delete form ============
+=            <div className="p-divider">
+              <div className="p-divider_line"></div>
+              <span>或</span>
+              <div className="p-divider_line"></div>
+            </div>
+
+
+            <form className="flex flex-col gap-4 mt-4">
+              <TextField id="email" label="Email" variant="outlined" />
+              <TextField id="password" label="Password" variant="outlined" />
+
+              <Button variant="contained" color="success">
+                登入
+              </Button>
+            </form>
+ */

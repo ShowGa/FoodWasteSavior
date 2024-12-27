@@ -31,6 +31,12 @@ const UserLogin = () => {
             <h2 className="text-3xl font-extrabold">用戶註冊</h2>
             <span className="text-sm text-gray-400">請輸入您的詳細資料</span>
 
+            <div className="p-divider">
+              <div className="p-divider_line"></div>
+              <span>OAuth</span>
+              <div className="p-divider_line"></div>
+            </div>
+
             {/* OAuth */}
             <div className="flex flex-col gap-4 my-4">
               <button className="c-OAuth_btn">
@@ -42,25 +48,6 @@ const UserLogin = () => {
                 <span>使用 Apple 繼續</span>
               </button>
             </div>
-
-            {/* Divider */}
-            <div className="p-divider">
-              <div className="p-divider_line"></div>
-              <span>或</span>
-              <div className="p-divider_line"></div>
-            </div>
-
-            {/* Form */}
-            <form className="flex flex-col gap-4 mt-4">
-              {/* material UI */}
-              <TextField id="email" label="Email" variant="outlined" />
-              <TextField id="password" label="Password" variant="outlined" />
-
-              {/* material UI */}
-              <Button variant="contained" color="success">
-                註冊
-              </Button>
-            </form>
 
             {/* Forgot Password & Create an Account */}
             <div className="flex flex-col gap-1 mt-4 text-sm">
@@ -82,3 +69,19 @@ const UserLogin = () => {
 };
 
 export default UserLogin;
+
+/*            <div className="p-divider">
+              <div className="p-divider_line"></div>
+              <span>或</span>
+              <div className="p-divider_line"></div>
+            </div>
+
+            <form className="flex flex-col gap-4 mt-4">
+              <TextField id="email" label="Email" variant="outlined" />
+              <TextField id="password" label="Password" variant="outlined" />
+
+              <Button variant="contained" color="success">
+                註冊
+              </Button>
+            </form>
+            */
