@@ -16,9 +16,6 @@ const Layouts2 = () => {
   // check isMobile
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // zustand
-  const { authUser } = useAuthUserStore();
-
   // ===================== //
   //    Helper Function    //
   // ===================== //
@@ -29,11 +26,6 @@ const Layouts2 = () => {
   useEffect(() => {
     // windowsize listener
     window.addEventListener("resize", handleWindowSizeChange);
-
-    // check if authUser is null
-    if (authUser === null) {
-      navigate("/user-login");
-    }
 
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);

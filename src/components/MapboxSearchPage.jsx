@@ -119,8 +119,8 @@ const MapboxSearchPage = ({
     <>
       <Map
         initialViewState={{
-          longitude: userPositionForSearch.longitude,
-          latitude: userPositionForSearch.latitude,
+          longitude: userPositionForSearch.longitude || 121.5654,
+          latitude: userPositionForSearch.latitude || 25.033,
           zoom: 14,
         }}
         style={{ width: "100%", height: "100%" }}

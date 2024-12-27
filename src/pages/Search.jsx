@@ -58,11 +58,13 @@ const Search = () => {
   const [searchStoreData, setSearchStoreData] = useState([]);
   // user position
   const [userPositionForSearch, setUserPositionForSearch] = useState(
-    { ...userPosition, radius: 1000 } || {
-      longitude: 121.5654,
-      latitude: 25.033,
-      radius: 1000,
-    }
+    userPosition
+      ? { ...userPosition, radius: 1000 }
+      : {
+          longitude: 121.5654,
+          latitude: 25.033,
+          radius: 1000,
+        }
   );
 
   // filter modal

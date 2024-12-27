@@ -48,8 +48,8 @@ const GoogleOAuth = () => {
 
           // loginSetAuthUser();
           toast.success("登入成功 !");
-          // navigate to /search
-          navigate("/search");
+          // navigate to /
+          navigate("/");
         })
         .catch((error) => {
           const message = error.response?.data.message || error;

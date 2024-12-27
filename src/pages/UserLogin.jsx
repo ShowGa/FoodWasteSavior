@@ -18,7 +18,7 @@ const UserLogin = () => {
 
   useEffect(() => {
     if (authUser) {
-      navigate("/search");
+      navigate("/");
     }
   }, []);
 

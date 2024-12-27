@@ -33,15 +33,18 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* logout layout */}
-        <Route path="/" element={<Layouts />}>
+        {/* <Route path="/" element={<Layouts />}>
           <Route index element={<Home />} />
+        </Route> */}
+
+        <Route path="/" element={<Layouts2 />}>
+          <Route index element={<Search />} />
         </Route>
 
         {/* login layout */}
         <Route element={<Layouts2 />}>
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<UserProfile />} />
-            <Route path="/search" element={<Search />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders-history" element={<OrdersHistory />} />

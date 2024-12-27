@@ -19,7 +19,7 @@ import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
 
 const buttonIconsInfo = [
   // { icon: <RiCompassDiscoverLine />, link: "/discover" },
-  { icon: <RiSearchLine />, link: "/search" },
+  { icon: <RiSearchLine />, link: "/" },
   { icon: <FaShoppingCart />, link: "/orders" },
   { icon: <FaHeart />, link: "/favorite" },
   { icon: <FaUserCircle />, link: "/profile" },
@@ -59,7 +59,7 @@ const Header2 = ({ isMobile }) => {
     <header className="c-header2 bg-white" ref={headerRef}>
       {/* top */}
       <div className="flex flex-row items-center justify-between px-10 max-lg:px-8 border-b">
-        <Link to="/search" className="text-4xl py-4">
+        <Link to="/" className="text-4xl py-4">
           <img src={Logobg} alt="logo" className="w-16 h-16" />
         </Link>
 
