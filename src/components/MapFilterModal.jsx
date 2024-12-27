@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Navigate } from "react-router-dom";
 // mapbox
 import { Map } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -21,6 +22,11 @@ const MapFilterModal = ({ setShowFilterModal }) => {
   const mapRef = useRef(null);
 
   const { userPosition, loginSetUserPosition } = useAuthUserPositionStore();
+
+  if (!userPosition) {
+    toast.error("請先登入!");
+    return <Navigate to="/user-login" />;
+  }
 
   // optimize for address search
   const [canSearch, setCanSearch] = useState(false);
@@ -123,8 +129,8 @@ const MapFilterModal = ({ setShowFilterModal }) => {
           <Map
             ref={mapRef}
             initialViewState={{
-              longitude: userPosition.longitude,
-              latitude: userPosition.latitude,
+              longitude: userPosition?.longitude || 121.5654,
+              latitude: userPosition?.latitude || 25.033,
               zoom: 14,
             }}
             style={{ width: "100%", height: "100%" }}
