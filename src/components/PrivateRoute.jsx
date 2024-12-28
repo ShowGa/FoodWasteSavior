@@ -8,7 +8,6 @@ const PrivateRoute = () => {
   // zustand later
   const { authUser } = useAuthUserStore();
 
-  console.log(authUser);
   return authUser ? <Outlet /> : <Navigate to="/user-login" />;
 };
 

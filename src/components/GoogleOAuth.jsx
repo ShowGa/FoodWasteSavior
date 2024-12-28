@@ -35,11 +35,8 @@ const GoogleOAuth = () => {
 
       const idToken = await resultFromFirebase.user.getIdToken();
 
-      console.log(idToken);
-
       AuthService.firebaseGoogleOAuth({ idToken })
         .then((response) => {
-          console.log(response);
           const { userPosition, jwt, ...userInfo } = response.data.data;
 
           loginSetAuthUser(userInfo);
@@ -57,7 +54,6 @@ const GoogleOAuth = () => {
 
           console.log(message);
         });
-      // console.log(data);
     } catch (error) {
       toast.error("糟糕!出現了問題。請檢查網路是否連線，或稍後再試。");
       console.log(error);

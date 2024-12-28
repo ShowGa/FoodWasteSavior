@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // react router dom
 import { Link, useNavigate } from "react-router-dom";
 // Assets
-import { shoppingModify, Logobg } from "../assets";
+import { shoppingModify, logo15ms } from "../assets";
 
 import { IoLogoApple } from "react-icons/io5";
 // material UI
@@ -26,7 +26,8 @@ const UserLogin = () => {
     <div>
       {/* logo */}
       <div className="absolute top-5 right-10 z-50">
-        <img src={Logobg} alt="logo" className="w-16 h-16" />
+        {/* 左右相反 */}
+        <img src={logo15ms} alt="logo" className="w-16 h-16 -scale-x-100" />
       </div>
 
       <div className="flex h-screen">

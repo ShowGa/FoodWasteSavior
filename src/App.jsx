@@ -37,12 +37,9 @@ function App() {
           <Route index element={<Home />} />
         </Route> */}
 
-        <Route path="/" element={<Layouts2 />}>
-          <Route index element={<Search />} />
-        </Route>
-
         {/* login layout */}
         <Route element={<Layouts2 />}>
+          <Route index element={<Search />} />
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/favorite" element={<Favorite />} />

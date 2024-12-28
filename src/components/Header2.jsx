@@ -12,7 +12,7 @@ import { AiOutlineControl } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import { RiSearchLine } from "react-icons/ri";
 // assets
-import { Logobg } from "../assets";
+import { logo15ms } from "../assets";
 
 // zustand
 import { useHeaderHeightStore } from "../zustand/mapUXMechanismStore";
@@ -60,7 +60,7 @@ const Header2 = ({ isMobile }) => {
       {/* top */}
       <div className="flex flex-row items-center justify-between px-10 max-lg:px-8 border-b">
         <Link to="/" className="text-4xl py-4">
-          <img src={Logobg} alt="logo" className="w-16 h-16" />
+          <img src={logo15ms} alt="logo" className="w-16 h-16" />
         </Link>
 
         {!isMobile && (
