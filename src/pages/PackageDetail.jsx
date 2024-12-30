@@ -119,7 +119,7 @@ const PackageDetail = () => {
       </section>
 
       <section className="flex mt-10 max-lg:flex-col max-lg:items-center">
-        <div className="basis-[63%]">
+        <div className="basis-[63%] max-lg:w-full">
           <div className="border-b border-gray-200 pb-5">
             {/* tag for quantityRemianing */}
             <div className="bottom-4 w-fit left-4 bg-primary rounded-full p-1 px-2 text-white font-bold">
@@ -166,7 +166,7 @@ const PackageDetail = () => {
           </div>
         </div>
 
-        <div className="basis-[37%] ml-[10%] w-full max-w-[20rem] relative max-lg:ml-0 max-lg:mt-10">
+        <div className="basis-[37%] ml-[10%] w-full max-w-[20rem] relative max-lg:ml-0 max-lg:mt-10 max-lg:max-w-none">
           {/* add some shadow */}
           <div className="flex flex-col gap-5 border border-gray-200 rounded-xl p-7 items-center top-0 w-full text-center shadow-lg">
             <div>
