@@ -167,14 +167,15 @@ const MapboxSearchPage = ({
         onClick={handleSearchButtonClick}
       >
         <button
-          className={`rounded-full p-2 font-bold text-black ${
+          // 文字不換行
+          className={`whitespace-nowrap rounded-full p-2 font-bold text-black ${
             isPositionChanged ? "bg-white w-20" : "bg-[#414141] w-10"
           }`}
           style={{
             transition: "all 0.3s ease-in-out",
           }}
         >
-          {isPositionChanged ? "Search" : ""}
+          {isPositionChanged ? "搜尋" : ""}
         </button>
       </div>
 

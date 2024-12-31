@@ -13,7 +13,7 @@ const StoreCard = ({ storeInfo }) => {
 
   return (
     <Link to={`/store/${storeInfo.storeId}`}>
-      <div className="c-store-card">
+      <div className="c-store-card w-[18rem] max-md:w-full">
         {/* Store Image */}
         <div className="c-store-img-container overflow-hidden">
           <img
