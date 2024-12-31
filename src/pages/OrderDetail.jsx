@@ -84,7 +84,7 @@ const OrderDetail = () => {
               <img
                 src={orderDetail?.storeLogo}
                 alt=""
-                className="rounded-full object-cover"
+                className="w-full h-full rounded-full object-cover"
               />
             </div>
             <div className="text-center">
