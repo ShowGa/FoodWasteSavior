@@ -161,7 +161,7 @@ const PackageDetail = () => {
           <div className="border-b border-gray-200 py-5">
             <h3 className="text-xl font-bold">成分與過敏原</h3>
             <p className="text-lg font-light mt-2">
-              {packageDetail?.packageAllergenDesc || "無"}
+              {packageDetail?.packageAllergensDesc || "無"}
             </p>
           </div>
         </div>
