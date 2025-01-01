@@ -65,7 +65,7 @@ const OrderHistoryDetail = () => {
                   <p className="text-xl">{orderDetail?.orderDate}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-gray-400"></p>
+                  <p className="font-bold text-gray-400">商品種類</p>
                   <p className="text-xl">
                     {categoryName(orderDetail?.packageCategory)}
                   </p>
