@@ -178,7 +178,7 @@ const UserProfile = () => {
   }, [imgFile]);
 
   return (
-    <main className="px-[4rem] py-[1.5rem]">
+    <main className="px-[4rem] py-[1.5rem] max-md:px-[0.5rem]">
       <div className="flex flex-col gap-8 p-[1.5rem] min-h-screen">
         {/* state*/}
         <section>
