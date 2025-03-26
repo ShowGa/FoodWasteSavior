@@ -19,6 +19,7 @@ This is a concept platform that addresses food waste issues through a business a
 
 📦 Source Code:
 
+- Consumer Platform : Here you are
 - Business Platform: [https://github.com/ShowGa/FoodWasteSaviorMyStore](https://github.com/ShowGa/FoodWasteSaviorMyStore)
 - Backend Server: [https://github.com/ShowGa/FoodWasteSaviorServer](https://github.com/ShowGa/FoodWasteSaviorServer)
 
@@ -91,6 +92,7 @@ This is a concept platform that addresses food waste issues through a business a
 
 📦 原始碼：
 
+- 消費者平台 : 就在這
 - 商家平台：[https://github.com/ShowGa/FoodWasteSaviorMyStore](https://github.com/ShowGa/FoodWasteSaviorMyStore)
 - 後端伺服器：[https://github.com/ShowGa/FoodWasteSaviorServer](https://github.com/ShowGa/FoodWasteSaviorServer)
 
