@@ -57,7 +57,7 @@ function App() {
 
         {/* No Layout */}
         <Route path="/user-login" element={<UserLogin />} />
-        {/* <Route path="/user-signup" element={<UserSignUp />} /> */}
+        <Route path="/user-signup" element={<UserSignUp />} />
       </Routes>
 
       {/* react hot toast */}

@@ -33,26 +33,35 @@ const UserLogin = () => {
 
             <div className="p-divider">
               <div className="p-divider_line"></div>
-              <span>OAuth</span>
+              <span className="whitespace-nowrap">註冊</span>
               <div className="p-divider_line"></div>
             </div>
 
-            {/* OAuth */}
-            <div className="flex flex-col gap-4 my-4">
-              <button className="c-OAuth_btn">
-                <FcGoogle className="text-xl" />
-                <span>使用 Google 繼續</span>
-              </button>
-              <button className="c-OAuth_btn">
-                <IoLogoApple className="text-2xl" />
-                <span>使用 Apple 繼續</span>
-              </button>
-            </div>
+            {/* register */}
+            <form className="flex flex-col gap-4 mt-4">
+              {/* 修改textfield style為success */}
+              <TextField
+                id="email"
+                label="Email"
+                variant="outlined"
+                color="success"
+              />
+              <TextField
+                id="password"
+                label="Password"
+                variant="outlined"
+                color="success"
+              />
+
+              <Button variant="contained" color="success">
+                註冊
+              </Button>
+            </form>
 
             {/* Forgot Password & Create an Account */}
             <div className="flex flex-col gap-1 mt-4 text-sm">
               <div>
-                <span>已經有帳號了嗎？</span>
+                <span>已經有帳號，或想使用Google、Apple註冊？</span>
                 <Link
                   className="text-blue-500 hover:underline"
                   to="/user-login"
