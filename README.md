@@ -1,4 +1,4 @@
-# 吃不完兜著走 [中文版]
+# 吃不完兜著走 - Java程式訓練營畢業作品 [中文版]
 
 🌐 Canva簡報：[https://canva.link/jrhjelgjye7wl6m](https://canva.link/jrhjelgjye7wl6m)
 
